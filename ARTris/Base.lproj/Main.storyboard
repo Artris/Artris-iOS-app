@@ -43,9 +43,8 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="movementView" destination="IFz-Xv-Q3Q" id="8ws-4Q-AEk"/>
-                        <outlet property="rotationView" destination="tAg-9d-Afy" id="GxA-rX-rss"/>
-                        <outlet property="sceneView" destination="J2q-C1-onU" id="zep-rn-fev"/>
+                        <outlet property="movementView" destination="IFz-Xv-Q3Q" id="Mwd-OV-zoz"/>
+                        <outlet property="sceneView" destination="J2q-C1-onU" id="fpi-o3-AAC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
