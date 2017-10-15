@@ -12,6 +12,37 @@ import SceneKit
 
 class GameViewController: UIViewController, ARSCNViewDelegate {
     @IBOutlet weak var sceneView: ARSCNView!
+    @IBOutlet weak var movementView: UIView! {
+        didSet {
+            let swipeHandler = #selector(self.swipeHandler(byReactingTo:))
+            let supportedDirections: [UISwipeGestureRecognizerDirection] = [.right, .left, .up, .down]
+            for direction in supportedDirections {
+                let swipeRecognizer = UISwipeGestureRecognizer(target: self, action: swipeHandler)
+                swipeRecognizer.direction = direction
+                movementView.addGestureRecognizer(swipeRecognizer)
+            }
+        }
+    }
+    
+    var tB = (pos: (0,0,0), 0)
+    @objc func swipeHandler(byReactingTo swipeRecognizer: UISwipeGestureRecognizer){
+        switch swipeRecognizer.direction {
+        case .right:
+            tB = (pos: (tB.pos.0 + 1, tB.pos.1, tB.pos.2), 0)
+        case .down:
+            tB = (pos: (tB.pos.0, tB.pos.1, tB.pos.2 + 1), 0)
+        case .up:
+            tB = (pos: (tB.pos.0, tB.pos.1, tB.pos.2 - 1), 0)
+        case .left:
+            tB = (pos: (tB.pos.0 - 1, tB.pos.1, tB.pos.2), 0)
+        default:
+            break
+        }
+        blocks.blocks = [tB]
+    }
+    
+    @IBOutlet weak var rotationView: UIView!
+    
     let scale: CGFloat = 0.1
     var grid: Grid!
     var blocks: Blocks!
@@ -32,9 +63,10 @@ class GameViewController: UIViewController, ARSCNViewDelegate {
         super.viewDidAppear(animated)
         grid = Grid(w: 10, h: 20, l: 10,
                     parent: sceneView.scene.rootNode, scale: scale,
-                    color: UIColor.gray.withAlphaComponent(0.7))
+                    color: UIColor.gray.withAlphaComponent(0.1))
         blocks = Blocks(parent: sceneView.scene.rootNode, scale: scale)
         grid.draw()
+        blocks.blocks = [tB]
     }
     
     override func viewWillDisappear(_ animated: Bool) {
