@@ -14,6 +14,7 @@ class GameViewController: UIViewController, ARSCNViewDelegate {
     @IBOutlet weak var sceneView: ARSCNView!
     let scale: CGFloat = 0.1
     var grid: Grid!
+    var blocks: Blocks!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +33,7 @@ class GameViewController: UIViewController, ARSCNViewDelegate {
         grid = Grid(w: 10, h: 20, l: 10,
                     parent: sceneView.scene.rootNode, scale: scale,
                     color: UIColor.gray.withAlphaComponent(0.7))
+        blocks = Blocks(parent: sceneView.scene.rootNode, scale: scale)
         grid.draw()
     }
     

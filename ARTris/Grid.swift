@@ -9,10 +9,10 @@
 import SceneKit
 
 class Grid {
-    let w, h, l: Int
-    let parent: SCNNode, scale: CGFloat, color: UIColor
-    let diameter: CGFloat
-    var nodes: [SCNNode] = []
+    private let w, h, l: Int
+    private let parent: SCNNode, scale: CGFloat, color: UIColor
+    private let diameter: CGFloat
+    private var nodes: [SCNNode] = []
     
     init(w: Int, h: Int, l: Int, parent: SCNNode, scale: CGFloat, color: UIColor){
         self.parent = parent
@@ -29,7 +29,11 @@ class Grid {
         material.diffuse.contents = color
         cubeGeometry.materials = [material]
         let node = SCNNode(geometry: cubeGeometry)
-        node.position = SCNVector3(pos.x + dim.w / 2, pos.y + dim.h / 2, pos.z - dim.l / 2)
+        node.position = SCNVector3(
+            pos.x + dim.w / 2,
+            pos.y + dim.h / 2,
+            pos.z - dim.l / 2
+        )
         return node
     }
     
@@ -45,21 +49,21 @@ class Grid {
     
     private func parallelToZAxis() -> [SCNNode] {
         return permutation(w, h).map { (x, y) in
-            line(pos: (CGFloat(x) * scale, CGFloat(y) * scale, 0 - 3.0),
+            line(pos: (CGFloat(x) * scale, CGFloat(y) * scale, 0),
                  dim: (diameter, diameter, CGFloat(l) * scale))
         }
     }
     
     private func parallelToXAxis() -> [SCNNode] {
         return permutation(l, h).map { (z, y) in
-            line(pos: (0, CGFloat(y) * scale, CGFloat(-z) * scale - 3.0),
+            line(pos: (0, CGFloat(y) * scale, CGFloat(-z) * scale),
                  dim: (CGFloat(w) * scale, diameter, diameter))
         }
     }
     
     private func parallelToYAxis() -> [SCNNode] {
         return permutation(w, l).map { (x, z) in
-            line(pos: (CGFloat(x) * scale, 0, CGFloat(-z) * scale - 3.0),
+            line(pos: (CGFloat(x) * scale, 0, CGFloat(-z) * scale),
                  dim: (diameter, CGFloat(h) * scale, diameter))
         }
     }
