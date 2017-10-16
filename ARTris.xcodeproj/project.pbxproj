@@ -15,10 +15,16 @@
 		A64153C61F85E8B500713806 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A64153C41F85E8B500713806 /* LaunchScreen.storyboard */; };
 		A66E60DD1F9375920044D35D /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66E60DC1F9375920044D35D /* Action.swift */; };
 		A6835ECD1F92FB2500A8A509 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6835ECC1F92FB2500A8A509 /* Grid.swift */; };
+		A6D452A11F944A7E0098AD5D /* Engine.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D452A01F944A7E0098AD5D /* Engine.swift */; };
+		A6D452A31F944B530098AD5D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A6D452A21F944B530098AD5D /* GoogleService-Info.plist */; };
 		A6E942E71F9310780092A170 /* Blocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E942E61F9310780092A170 /* Blocks.swift */; };
+		DA11A77687084F8D3C98E109 /* Pods_ARTris.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 289BC569375D6A88E6D7E4CA /* Pods_ARTris.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		283E50AC1AD89D7DDDFC4652 /* Pods-ARTris.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARTris.release.xcconfig"; path = "Pods/Target Support Files/Pods-ARTris/Pods-ARTris.release.xcconfig"; sourceTree = "<group>"; };
+		289BC569375D6A88E6D7E4CA /* Pods_ARTris.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ARTris.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		36F6C810736C5061E73C03F2 /* Pods-ARTris.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARTris.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ARTris/Pods-ARTris.debug.xcconfig"; sourceTree = "<group>"; };
 		A62843321F93632E00A1E137 /* Interaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interaction.swift; sourceTree = "<group>"; };
 		A64153B81F85E8B500713806 /* ARTris.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARTris.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A64153BB1F85E8B500713806 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -29,6 +35,8 @@
 		A64153C71F85E8B500713806 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A66E60DC1F9375920044D35D /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
 		A6835ECC1F92FB2500A8A509 /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
+		A6D452A01F944A7E0098AD5D /* Engine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Engine.swift; sourceTree = "<group>"; };
+		A6D452A21F944B530098AD5D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A6E942E61F9310780092A170 /* Blocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blocks.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -37,17 +45,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA11A77687084F8D3C98E109 /* Pods_ARTris.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6DF968A0C42FE88B7E002310 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				36F6C810736C5061E73C03F2 /* Pods-ARTris.debug.xcconfig */,
+				283E50AC1AD89D7DDDFC4652 /* Pods-ARTris.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		7885EDCAADAE11DFE81C9934 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				289BC569375D6A88E6D7E4CA /* Pods_ARTris.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A64153AF1F85E8B500713806 = {
 			isa = PBXGroup;
 			children = (
 				A64153BA1F85E8B500713806 /* ARTris */,
 				A64153B91F85E8B500713806 /* Products */,
+				6DF968A0C42FE88B7E002310 /* Pods */,
+				7885EDCAADAE11DFE81C9934 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -63,6 +91,8 @@
 			isa = PBXGroup;
 			children = (
 				A64153CD1F85E91700713806 /* Supporting Files */,
+				A64153BB1F85E8B500713806 /* AppDelegate.swift */,
+				A6D452A01F944A7E0098AD5D /* Engine.swift */,
 				A64153BD1F85E8B500713806 /* GameViewController.swift */,
 				A6E942E61F9310780092A170 /* Blocks.swift */,
 				A6835ECC1F92FB2500A8A509 /* Grid.swift */,
@@ -70,6 +100,7 @@
 				A64153C71F85E8B500713806 /* Info.plist */,
 				A62843321F93632E00A1E137 /* Interaction.swift */,
 				A66E60DC1F9375920044D35D /* Action.swift */,
+				A6D452A21F944B530098AD5D /* GoogleService-Info.plist */,
 			);
 			path = ARTris;
 			sourceTree = "<group>";
@@ -77,7 +108,6 @@
 		A64153CD1F85E91700713806 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				A64153BB1F85E8B500713806 /* AppDelegate.swift */,
 				A64153C21F85E8B500713806 /* Assets.xcassets */,
 				A64153C41F85E8B500713806 /* LaunchScreen.storyboard */,
 			);
@@ -91,9 +121,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A64153CA1F85E8B500713806 /* Build configuration list for PBXNativeTarget "ARTris" */;
 			buildPhases = (
+				AD67C7689DE256E1BB033DD9 /* [CP] Check Pods Manifest.lock */,
 				A64153B41F85E8B500713806 /* Sources */,
 				A64153B51F85E8B500713806 /* Frameworks */,
 				A64153B61F85E8B500713806 /* Resources */,
+				0BC817D1F52E9A54D20487EE /* [CP] Embed Pods Frameworks */,
+				68AAA1A7349E9290DE8D8594 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -144,12 +177,71 @@
 			buildActionMask = 2147483647;
 			files = (
 				A64153C61F85E8B500713806 /* LaunchScreen.storyboard in Resources */,
+				A6D452A31F944B530098AD5D /* GoogleService-Info.plist in Resources */,
 				A64153C31F85E8B500713806 /* Assets.xcassets in Resources */,
 				A64153C11F85E8B500713806 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0BC817D1F52E9A54D20487EE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-ARTris/Pods-ARTris-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ARTris/Pods-ARTris-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		68AAA1A7349E9290DE8D8594 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ARTris/Pods-ARTris-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AD67C7689DE256E1BB033DD9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ARTris-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A64153B41F85E8B500713806 /* Sources */ = {
@@ -162,6 +254,7 @@
 				A6835ECD1F92FB2500A8A509 /* Grid.swift in Sources */,
 				A62843331F93632E00A1E137 /* Interaction.swift in Sources */,
 				A64153BC1F85E8B500713806 /* AppDelegate.swift in Sources */,
+				A6D452A11F944A7E0098AD5D /* Engine.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,6 +389,7 @@
 		};
 		A64153CB1F85E8B500713806 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 36F6C810736C5061E73C03F2 /* Pods-ARTris.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -311,6 +405,7 @@
 		};
 		A64153CC1F85E8B500713806 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 283E50AC1AD89D7DDDFC4652 /* Pods-ARTris.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

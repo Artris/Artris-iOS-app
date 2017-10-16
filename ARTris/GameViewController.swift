@@ -11,6 +11,7 @@ import ARKit
 import SceneKit
 
 class GameViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate, InteractionDelegate {
+    let engine = Engine()
     var movementInteraction: Interaction?
     var rotationInteraction: Interaction?
     
