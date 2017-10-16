@@ -91,7 +91,6 @@
 			isa = PBXGroup;
 			children = (
 				A64153CD1F85E91700713806 /* Supporting Files */,
-				A64153BB1F85E8B500713806 /* AppDelegate.swift */,
 				A6D452A01F944A7E0098AD5D /* Engine.swift */,
 				A64153BD1F85E8B500713806 /* GameViewController.swift */,
 				A6E942E61F9310780092A170 /* Blocks.swift */,
@@ -108,6 +107,7 @@
 		A64153CD1F85E91700713806 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A64153BB1F85E8B500713806 /* AppDelegate.swift */,
 				A64153C21F85E8B500713806 /* Assets.xcassets */,
 				A64153C41F85E8B500713806 /* LaunchScreen.storyboard */,
 			);

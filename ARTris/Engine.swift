@@ -24,6 +24,10 @@ class Position: NSObject {
     }
 }
 
+protocol EngineDelegate: class {
+    func stateChanged(_ state: [Position])
+}
+
 class Engine {
     static let ref: DatabaseReference = { () -> DatabaseReference in
         FirebaseApp.configure()
@@ -31,9 +35,10 @@ class Engine {
     }()
     
     let sessionId = "test"
+    weak var delegate: EngineDelegate?
     var state: [Position] = [] {
         didSet {
-            print(state)
+            delegate?.stateChanged(state)
         }
     }
     

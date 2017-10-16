@@ -10,8 +10,8 @@ import UIKit
 import ARKit
 import SceneKit
 
-class GameViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate, InteractionDelegate {
-    let engine = Engine()
+class GameViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate, InteractionDelegate, EngineDelegate {
+    var engine: Engine!
     var movementInteraction: Interaction?
     var rotationInteraction: Interaction?
     
@@ -36,6 +36,8 @@ class GameViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        engine = Engine()
+        engine.delegate = self
         sceneView.delegate = self
         sceneView.session.delegate = self
         sceneView.scene = SCNScene()
@@ -49,7 +51,7 @@ class GameViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        grid = Grid(w: 10, h: 20, l: 10,
+        grid = Grid(w: 10, h: 10, l: 10,
                     parent: sceneView.scene.rootNode, scale: scale,
                     color: UIColor.gray.withAlphaComponent(0.1))
         state = Blocks(parent: sceneView.scene.rootNode, scale: scale)
@@ -68,6 +70,12 @@ class GameViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate
     
     func update(name: String, action: Action){
         print("\(name) \(action.direction)")
+    }
+    
+    func stateChanged(_ state: [Position]) {
+        self.state.blocks = state.map{ cell -> ((Int, Int, Int), Int) in
+            return ((cell.x, cell.z, cell.y), cell.col)
+        }
     }
 }
 
