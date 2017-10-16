@@ -12,6 +12,8 @@ import SceneKit
 
 class GameViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate, InteractionDelegate {
     var movementInteraction: Interaction?
+    var rotationInteraction: Interaction?
+    
     @IBOutlet weak var sceneView: ARSCNView!
     @IBOutlet weak var movementView: UIView! {
         didSet {
@@ -20,10 +22,16 @@ class GameViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate
         }
     }
     
+    @IBOutlet weak var rotationView: UIView! {
+        didSet {
+            rotationInteraction = Interaction(name: "Rotate", view: rotationView)
+            rotationInteraction?.delegate = self
+        }
+    }
     
     let scale: CGFloat = 0.1
     var grid: Grid!
-    var blocks: Blocks!
+    var state: Blocks!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,9 +51,8 @@ class GameViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate
         grid = Grid(w: 10, h: 20, l: 10,
                     parent: sceneView.scene.rootNode, scale: scale,
                     color: UIColor.gray.withAlphaComponent(0.1))
-        blocks = Blocks(parent: sceneView.scene.rootNode, scale: scale)
+        state = Blocks(parent: sceneView.scene.rootNode, scale: scale)
         grid.draw()
-        blocks.blocks = [tB]
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -58,21 +65,21 @@ class GameViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate
         eulerAngle_y = Double(frame.camera.eulerAngles.y)
     }
     
-    var tB = (pos: (0,0,0), 0) // test block
     func update(name: String, action: Action){
-        switch action.direction {
-        case .right:
-            tB = (pos: (tB.pos.0 + 1, tB.pos.1, tB.pos.2), 0)
-        case .down:
-            tB = (pos: (tB.pos.0, tB.pos.1, tB.pos.2 + 1), 0)
-        case .up:
-            tB = (pos: (tB.pos.0, tB.pos.1, tB.pos.2 - 1), 0)
-        case .left:
-            tB = (pos: (tB.pos.0 - 1, tB.pos.1, tB.pos.2), 0)
-        default:
-            break
-        }
-        blocks.blocks = [tB]
+        print("\(name) \(action.direction)")
     }
 }
 
+extension UISwipeGestureRecognizerDirection: CustomStringConvertible {
+    public var description: String {
+        var action = "unkown action"
+        switch self {
+        case .left: action = "left"
+        case .right: action = "right"
+        case .up: action = "up"
+        case .down: action = "down"
+        default: break
+        }
+        return action
+    }
+}

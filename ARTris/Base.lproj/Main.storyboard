@@ -44,6 +44,7 @@
                     </view>
                     <connections>
                         <outlet property="movementView" destination="IFz-Xv-Q3Q" id="Mwd-OV-zoz"/>
+                        <outlet property="rotationView" destination="tAg-9d-Afy" id="1O2-tk-UWE"/>
                         <outlet property="sceneView" destination="J2q-C1-onU" id="fpi-o3-AAC"/>
                     </connections>
                 </viewController>
