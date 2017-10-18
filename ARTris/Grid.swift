@@ -14,12 +14,12 @@ class Grid {
     private let diameter: CGFloat
     private var nodes: [SCNNode] = []
     
-    init(w: Int, h: Int, l: Int, parent: SCNNode, scale: CGFloat, color: UIColor){
+    init(w: Int, h: Int, l: Int, parent: SCNNode, scale: CGFloat, color: UIColor, diameterRatio: CGFloat = 40.0){
         self.parent = parent
         self.scale = scale
         self.color = color
         self.w = w; self.h = h; self.l = l
-        self.diameter = scale / 100.0
+        self.diameter = scale / diameterRatio
     }
     
     private func line(pos: (x: CGFloat, y: CGFloat, z: CGFloat),
@@ -32,7 +32,7 @@ class Grid {
         node.position = SCNVector3(
             pos.x + dim.w / 2,
             pos.y + dim.h / 2,
-            pos.z - dim.l / 2
+            -pos.z - dim.l / 2
         )
         return node
     }
@@ -56,14 +56,14 @@ class Grid {
     
     private func parallelToXAxis() -> [SCNNode] {
         return permutation(l, h).map { (z, y) in
-            line(pos: (0, CGFloat(y) * scale, CGFloat(-z) * scale),
+            line(pos: (0, CGFloat(y) * scale, CGFloat(z) * scale),
                  dim: (CGFloat(w) * scale, diameter, diameter))
         }
     }
     
     private func parallelToYAxis() -> [SCNNode] {
         return permutation(w, l).map { (x, z) in
-            line(pos: (CGFloat(x) * scale, 0, CGFloat(-z) * scale),
+            line(pos: (CGFloat(x) * scale, 0, CGFloat(z) * scale),
                  dim: (diameter, CGFloat(h) * scale, diameter))
         }
     }

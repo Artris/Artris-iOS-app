@@ -30,7 +30,7 @@ class GameViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate
         }
     }
     
-    let scale: CGFloat = 0.1
+    let scale: CGFloat = 0.2
     var grid: Grid!
     var state: Blocks!
     
@@ -51,9 +51,9 @@ class GameViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        grid = Grid(w: 10, h: 10, l: 10,
+        grid = Grid(w: 8, h: 12, l: 8,
                     parent: sceneView.scene.rootNode, scale: scale,
-                    color: UIColor.gray.withAlphaComponent(0.1))
+                    color: UIColor.gray.withAlphaComponent(0.9))
         state = Blocks(parent: sceneView.scene.rootNode, scale: scale)
         grid.draw()
     }
@@ -74,7 +74,7 @@ class GameViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate
     
     func stateChanged(_ state: [Position]) {
         self.state.blocks = state.map{ cell -> ((Int, Int, Int), Int) in
-            return ((cell.x, cell.z, cell.y), cell.col)
+            return ((cell.x, cell.y, cell.z), cell.col)
         }
     }
 }
