@@ -34,7 +34,6 @@ class Engine {
         return Database.database().reference()
     }()
     
-    let sessionId = "test"
     weak var delegate: EngineDelegate?
     var state: [Position] = [] {
         didSet {
@@ -42,8 +41,13 @@ class Engine {
         }
     }
     
-    init() {
-        Engine.ref.child("game-session").child(sessionId).child("grid-render").observe(.value, with: { [weak self] snapshot in
+    let gameRef: DatabaseReference
+    let dataRef: DatabaseReference
+    init(sessionId: String = "test") {
+        gameRef = Engine.ref.child("game-session").child(sessionId)
+        dataRef = gameRef.child("grid-render")
+        
+        dataRef.observe(.value, with: { [weak self] snapshot in
             if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
                 let newState = snapshots.map { snap -> [Position?] in
                     if let cells = snap.children.allObjects as? [DataSnapshot] {
