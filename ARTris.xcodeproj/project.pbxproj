@@ -7,16 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A6040F451FA6DDBD0043B099 /* LocalizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6040F441FA6DDBD0043B099 /* LocalizationViewController.swift */; };
+		A6040F471FA6DDF20043B099 /* GridShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6040F461FA6DDF20043B099 /* GridShadow.swift */; };
 		A62843331F93632E00A1E137 /* Interaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62843321F93632E00A1E137 /* Interaction.swift */; };
 		A64153BC1F85E8B500713806 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64153BB1F85E8B500713806 /* AppDelegate.swift */; };
 		A64153BE1F85E8B500713806 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64153BD1F85E8B500713806 /* GameViewController.swift */; };
 		A64153C11F85E8B500713806 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A64153BF1F85E8B500713806 /* Main.storyboard */; };
 		A64153C31F85E8B500713806 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A64153C21F85E8B500713806 /* Assets.xcassets */; };
 		A64153C61F85E8B500713806 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A64153C41F85E8B500713806 /* LaunchScreen.storyboard */; };
+		A6658CE11FA82C8200074933 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A6658CE01FA82C8200074933 /* GoogleService-Info.plist */; };
 		A66E60DD1F9375920044D35D /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66E60DC1F9375920044D35D /* Action.swift */; };
 		A6835ECD1F92FB2500A8A509 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6835ECC1F92FB2500A8A509 /* Grid.swift */; };
 		A6D452A11F944A7E0098AD5D /* Engine.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D452A01F944A7E0098AD5D /* Engine.swift */; };
-		A6D452A31F944B530098AD5D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A6D452A21F944B530098AD5D /* GoogleService-Info.plist */; };
 		A6E942E71F9310780092A170 /* Blocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E942E61F9310780092A170 /* Blocks.swift */; };
 		DA11A77687084F8D3C98E109 /* Pods_ARTris.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 289BC569375D6A88E6D7E4CA /* Pods_ARTris.framework */; };
 /* End PBXBuildFile section */
@@ -25,6 +27,8 @@
 		283E50AC1AD89D7DDDFC4652 /* Pods-ARTris.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARTris.release.xcconfig"; path = "Pods/Target Support Files/Pods-ARTris/Pods-ARTris.release.xcconfig"; sourceTree = "<group>"; };
 		289BC569375D6A88E6D7E4CA /* Pods_ARTris.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ARTris.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		36F6C810736C5061E73C03F2 /* Pods-ARTris.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARTris.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ARTris/Pods-ARTris.debug.xcconfig"; sourceTree = "<group>"; };
+		A6040F441FA6DDBD0043B099 /* LocalizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationViewController.swift; sourceTree = "<group>"; };
+		A6040F461FA6DDF20043B099 /* GridShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridShadow.swift; sourceTree = "<group>"; };
 		A62843321F93632E00A1E137 /* Interaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interaction.swift; sourceTree = "<group>"; };
 		A64153B81F85E8B500713806 /* ARTris.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARTris.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A64153BB1F85E8B500713806 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -33,10 +37,10 @@
 		A64153C21F85E8B500713806 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A64153C51F85E8B500713806 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A64153C71F85E8B500713806 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A6658CE01FA82C8200074933 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A66E60DC1F9375920044D35D /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
 		A6835ECC1F92FB2500A8A509 /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 		A6D452A01F944A7E0098AD5D /* Engine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Engine.swift; sourceTree = "<group>"; };
-		A6D452A21F944B530098AD5D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A6E942E61F9310780092A170 /* Blocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blocks.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -69,6 +73,28 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		A6040F421FA6DCFC0043B099 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				A6D452A01F944A7E0098AD5D /* Engine.swift */,
+				A64153BD1F85E8B500713806 /* GameViewController.swift */,
+				A6E942E61F9310780092A170 /* Blocks.swift */,
+				A6835ECC1F92FB2500A8A509 /* Grid.swift */,
+				A62843321F93632E00A1E137 /* Interaction.swift */,
+				A66E60DC1F9375920044D35D /* Action.swift */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
+		A6040F431FA6DD880043B099 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				A6040F441FA6DDBD0043B099 /* LocalizationViewController.swift */,
+				A6040F461FA6DDF20043B099 /* GridShadow.swift */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
 		A64153AF1F85E8B500713806 = {
 			isa = PBXGroup;
 			children = (
@@ -90,16 +116,12 @@
 		A64153BA1F85E8B500713806 /* ARTris */ = {
 			isa = PBXGroup;
 			children = (
+				A6040F431FA6DD880043B099 /* Localization */,
 				A64153CD1F85E91700713806 /* Supporting Files */,
-				A6D452A01F944A7E0098AD5D /* Engine.swift */,
-				A64153BD1F85E8B500713806 /* GameViewController.swift */,
-				A6E942E61F9310780092A170 /* Blocks.swift */,
-				A6835ECC1F92FB2500A8A509 /* Grid.swift */,
+				A6040F421FA6DCFC0043B099 /* Game */,
 				A64153BF1F85E8B500713806 /* Main.storyboard */,
 				A64153C71F85E8B500713806 /* Info.plist */,
-				A62843321F93632E00A1E137 /* Interaction.swift */,
-				A66E60DC1F9375920044D35D /* Action.swift */,
-				A6D452A21F944B530098AD5D /* GoogleService-Info.plist */,
+				A6658CE01FA82C8200074933 /* GoogleService-Info.plist */,
 			);
 			path = ARTris;
 			sourceTree = "<group>";
@@ -177,7 +199,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A64153C61F85E8B500713806 /* LaunchScreen.storyboard in Resources */,
-				A6D452A31F944B530098AD5D /* GoogleService-Info.plist in Resources */,
+				A6658CE11FA82C8200074933 /* GoogleService-Info.plist in Resources */,
 				A64153C31F85E8B500713806 /* Assets.xcassets in Resources */,
 				A64153C11F85E8B500713806 /* Main.storyboard in Resources */,
 			);
@@ -253,7 +275,9 @@
 				A6E942E71F9310780092A170 /* Blocks.swift in Sources */,
 				A6835ECD1F92FB2500A8A509 /* Grid.swift in Sources */,
 				A62843331F93632E00A1E137 /* Interaction.swift in Sources */,
+				A6040F471FA6DDF20043B099 /* GridShadow.swift in Sources */,
 				A64153BC1F85E8B500713806 /* AppDelegate.swift in Sources */,
+				A6040F451FA6DDBD0043B099 /* LocalizationViewController.swift in Sources */,
 				A6D452A11F944A7E0098AD5D /* Engine.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
