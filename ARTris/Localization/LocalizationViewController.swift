@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 import ARKit
 import SceneKit
 
@@ -22,6 +23,10 @@ class LocalizationViewController: UIViewController, ARSCNViewDelegate, ARSession
             let pinchHandler = #selector(LocalizationViewController.scale(byReactingTo:))
             let pinchRecognizer = UIPinchGestureRecognizer(target: self, action: pinchHandler)
             sceneView.addGestureRecognizer(pinchRecognizer)
+            
+            let panHandler = #selector(LocalizationViewController.move(byReactingTo:))
+            let panRecognizer = UIPanGestureRecognizer(target: self, action: panHandler)
+            sceneView.addGestureRecognizer(panRecognizer)
         }
     }
     
@@ -35,6 +40,19 @@ class LocalizationViewController: UIViewController, ARSCNViewDelegate, ARSession
         guard shadow != nil && pinchRecognizer.state == .changed else { return }
         shadow.scale *= pinchRecognizer.scale
         pinchRecognizer.scale = 1
+    }
+    
+    @objc func move(byReactingTo panRecognizer: UIPanGestureRecognizer){
+        guard shadowBinder != nil && panRecognizer.state == .changed else { return }
+        
+        let location = panRecognizer.location(in: sceneView)
+        let hitTestResults = sceneView.hitTest(location, types: .featurePoint)
+        
+        if let result = hitTestResults.first {
+            let positionColumn = result.worldTransform.columns.3
+            let position = SCNVector3(positionColumn.x, positionColumn.y, positionColumn.z)
+            shadowBinder.worldPosition = position
+        }
     }
     
     override func viewDidLoad() {
