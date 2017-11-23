@@ -47,7 +47,7 @@ class Blocks {
         let node = SCNNode(geometry: cubeGeometry)
         node.position = SCNVector3(
             CGFloat(pos.x) * scale + scale / 2 - 1,
-            CGFloat(pos.y) * scale + scale / 2,
+            CGFloat(pos.y) * scale + scale / 2 ,
             -CGFloat(pos.z) * scale - scale / 2 - 3
         )
         return node
