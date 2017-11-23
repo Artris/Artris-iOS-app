@@ -30,10 +30,11 @@ class Grid {
         cubeGeometry.materials = [material]
         let node = SCNNode(geometry: cubeGeometry)
         node.position = SCNVector3(
-            pos.x + dim.w / 2,
-            pos.y + dim.h / 2,
-            -pos.z - dim.l / 2
+            pos.x + dim.w / 2 - 1,
+            pos.y + dim.h / 2 - 1,
+            -pos.z - dim.l / 2 - 3
         )
+
         return node
     }
     

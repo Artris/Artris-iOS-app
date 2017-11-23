@@ -25,8 +25,8 @@ class GridShadow {
     private var width: CGFloat { return currSize * CGFloat(w) }
     private var length: CGFloat { return currSize * CGFloat(l) }
     private var wrapperPosition: SCNVector3 {
-        let midW = width / 2.0
-        let midL = length / 2.0
+        let midW =  width / 2.0
+        let midL =   length / 2.0
         return SCNVector3(-midW, 0, midL)
     }
     lazy private var wrapper: SCNNode = {

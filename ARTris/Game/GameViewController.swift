@@ -11,7 +11,12 @@ import ARKit
 import SceneKit
 
 class GameViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate, InteractionDelegate, EngineDelegate {
+
+    var gameSession: GameSession!
     var engine: Engine!
+    var sessionId: String!
+    var shadowBinder: SCNNode!
+    
     var movementInteraction: Interaction?
     var rotationInteraction: Interaction?
     
@@ -36,10 +41,11 @@ class GameViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        engine = Engine()
-        engine.delegate = self
+        gameSession = GameSession(gameId: sessionId)
+        engine = Engine(sessionId: gameSession.sessionId)
         sceneView.delegate = self
         sceneView.session.delegate = self
+        engine.delegate = self
         sceneView.scene = SCNScene()
     }
     
@@ -47,6 +53,7 @@ class GameViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate
         super.viewWillAppear(animated)
         let configuration = ARWorldTrackingConfiguration()
         sceneView.session.run(configuration)
+        state = Blocks(parent: sceneView.scene.rootNode, scale: scale)//moved from viewdidAppear sceneView.scene.rootNode
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -54,7 +61,6 @@ class GameViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate
         grid = Grid(w: 8, h: 12, l: 8,
                     parent: sceneView.scene.rootNode, scale: scale,
                     color: UIColor.gray.withAlphaComponent(0.9))
-        state = Blocks(parent: sceneView.scene.rootNode, scale: scale)
         grid.draw()
     }
     
@@ -70,11 +76,12 @@ class GameViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate
     
     func update(name: String, action: Action){
         print("\(name) \(action.direction)")
+        gameSession.gameRef.child(name).childByAutoId().setValue(String(describing: action.direction))
     }
     
     func stateChanged(_ state: [Position]) {
         self.state.blocks = state.map{ cell -> ((Int, Int, Int), Int) in
-            return ((cell.x, cell.y, cell.z), cell.col)
+            return ((cell.x, cell.y, cell.z), cell.col) //state changed delegate called before state is initiliazed
         }
     }
 }
