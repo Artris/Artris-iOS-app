@@ -12,7 +12,7 @@ class Blocks {
     private let parent: SCNNode
     private let scale: CGFloat
     private let chamferRadius: CGFloat
-    init(parent: SCNNode, scale: CGFloat, chamferRadius: CGFloat = 0.02){
+    init(parent: SCNNode, scale: CGFloat, chamferRadius: CGFloat = 0.0){
         self.parent = parent
         self.scale = scale
         self.chamferRadius = chamferRadius
@@ -32,7 +32,7 @@ class Blocks {
     }
     
     private let colorMap: [Int: UIColor] = [
-        1 : UIColor.green,
+        1: UIColor.green,
         2: UIColor.blue,
         3: UIColor.red,
         4: UIColor.yellow,
@@ -47,7 +47,7 @@ class Blocks {
         let node = SCNNode(geometry: cubeGeometry)
         node.position = SCNVector3(
             CGFloat(pos.x) * scale + scale / 2,
-            CGFloat(pos.y) * scale + scale / 2,
+            CGFloat(pos.y) * scale + scale / 2 - 2 * scale,
             -CGFloat(pos.z) * scale - scale / 2
         )
         return node

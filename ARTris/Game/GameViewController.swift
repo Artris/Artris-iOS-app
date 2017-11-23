@@ -11,11 +11,28 @@ import ARKit
 import SceneKit
 
 class GameViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate, InteractionDelegate, EngineDelegate {
+
+    var gameSession: GameSession!
     var engine: Engine!
+    var sessionId: String!
+    
+    //the following variables are set by the previous controller
+    var session: ARSession!
+    var parentNode: SCNNode!
+    var position: SCNVector3!
+    
     var movementInteraction: Interaction?
     var rotationInteraction: Interaction?
     
-    @IBOutlet weak var sceneView: ARSCNView!
+    @IBOutlet weak var sceneView: ARSCNView! {
+        didSet {
+            //Configure sceneView
+            sceneView.session = session
+            sceneView.scene = SCNScene()
+            //run the session
+            sceneView.session.run(sceneView.session.configuration!)
+        }
+    }
     @IBOutlet weak var movementView: UIView! {
         didSet {
             movementInteraction = Interaction(name: "Move", view: movementView)
@@ -30,32 +47,46 @@ class GameViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate
         }
     }
     
-    let scale: CGFloat = 0.2
+    let scale: CGFloat = 0.02
     var grid: Grid!
     var state: Blocks!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        engine = Engine()
-        engine.delegate = self
+        
+        //in initialize classes
+        gameSession = GameSession(gameId: sessionId)
+        engine = Engine(sessionId: gameSession.sessionId)
+      
+    
+        //set the delegates
         sceneView.delegate = self
         sceneView.session.delegate = self
-        sceneView.scene = SCNScene()
+        engine.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let configuration = ARWorldTrackingConfiguration()
-        sceneView.session.run(configuration)
+        //moved from viewdidAppear: blocks for game
+        
+        //for DEBUGGING
+        let cubeNode = SCNNode(geometry: SCNBox(width: 0.05, height: 0.05, length: 0.05, chamferRadius: 0))
+        cubeNode.position = SCNVector3(0, 0, -0.2)
+        sceneView.scene.rootNode.addChildNode(cubeNode)
+        
+        //draw the grid
+        
+        grid = Grid(w: 10, h: 10, l: 10,
+                    parent: parentNode, scale: scale,
+                    color: UIColor.gray.withAlphaComponent(0.9))
+        grid.draw()
+        //add the node to the root node for DEBUGGING
+        sceneView.scene.rootNode.addChildNode(parentNode)
+        state = Blocks(parent: grid.wrapper, scale: scale) //sceneView.scene.rootNode
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        grid = Grid(w: 8, h: 12, l: 8,
-                    parent: sceneView.scene.rootNode, scale: scale,
-                    color: UIColor.gray.withAlphaComponent(0.9))
-        state = Blocks(parent: sceneView.scene.rootNode, scale: scale)
-        grid.draw()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -69,7 +100,7 @@ class GameViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate
     }
     
     func update(name: String, action: Action){
-        print("\(name) \(action.direction)")
+        gameSession.gameRef.child(name).childByAutoId().setValue(String(describing: action.direction))
     }
     
     func stateChanged(_ state: [Position]) {

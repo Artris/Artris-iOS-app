@@ -8,7 +8,7 @@
 
 import SceneKit
 
-class GridShadow {
+class GridTest {
     private let w, l: Int, parent: SCNNode, thicknessRatio: CGFloat, color: UIColor
     private var size: CGFloat
     init(w: Int, l: Int, parent: SCNNode, size: CGFloat, color: UIColor){
@@ -107,4 +107,10 @@ class GridShadow {
         x_nodes.forEach { node in wrapper.addChildNode(node) }
         z_nodes.forEach { node in wrapper.addChildNode(node) }
     }
+    
+    func drawCube() {
+        
+        
+    }
+    
 }

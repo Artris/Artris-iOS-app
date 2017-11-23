@@ -7,8 +7,6 @@
 //
 
 import Foundation
-import Firebase
-import FirebaseDatabase
 
 class Position: NSObject {
     let x, y, z, col: Int
@@ -29,10 +27,6 @@ protocol EngineDelegate: class {
 }
 
 class Engine {
-    static let ref: DatabaseReference = { () -> DatabaseReference in
-        FirebaseApp.configure()
-        return Database.database().reference()
-    }()
     
     weak var delegate: EngineDelegate?
     var state: [Position] = [] {
@@ -40,28 +34,9 @@ class Engine {
             delegate?.stateChanged(state)
         }
     }
-    
-    let gameRef: DatabaseReference
-    let dataRef: DatabaseReference
+
     init(sessionId: String = "test") {
-        gameRef = Engine.ref.child("game-session").child(sessionId)
-        dataRef = gameRef.child("grid-render")
-        
-        dataRef.observe(.value, with: { [weak self] snapshot in
-            if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
-                let newState = snapshots.map { snap -> [Position?] in
-                    if let cells = snap.children.allObjects as? [DataSnapshot] {
-                        return cells.map{ cell -> Position? in
-                            if let pos = cell.value as? Dictionary<String, Int> {
-                                return Position(dict: pos)
-                            }
-                            return nil
-                        }
-                    }
-                    return Array<Position?>()
-                }
-                self?.state = newState.flatMap { $0.flatMap{ $0 } }
-            }
-        });
+        let firebase = Firebase(sessionId: sessionId)
+        firebase.fetchPositions(engine: self)
     }
 }
