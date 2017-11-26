@@ -16,6 +16,9 @@ class GameViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate
     var engine: Engine!
     var sessionId: String!
     var shadowBinder: SCNNode!
+    var session: ARSession!
+    var scene: SCNScene!
+    var parentNode: SCNNode!
     
     var movementInteraction: Interaction?
     var rotationInteraction: Interaction?
@@ -39,6 +42,8 @@ class GameViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate
     var grid: Grid!
     var state: Blocks!
     
+   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         gameSession = GameSession(gameId: sessionId)
@@ -51,16 +56,19 @@ class GameViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let configuration = ARWorldTrackingConfiguration()
-        sceneView.session.run(configuration)
+        //let configuration = ARWorldTrackingConfiguration()
+        sceneView.session = session
+        sceneView.session.run(session.configuration!) //.run(configuration)
+        sceneView.scene.rootNode.addChildNode(parentNode)
+        print( "The GameVC node:  \(sceneView.scene.rootNode)")
         state = Blocks(parent: sceneView.scene.rootNode, scale: scale)//moved from viewdidAppear sceneView.scene.rootNode
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         grid = Grid(w: 8, h: 12, l: 8,
-                    parent: sceneView.scene.rootNode, scale: scale,
-                    color: UIColor.gray.withAlphaComponent(0.9))
+                    parent: parentNode, scale: scale,
+                    color: UIColor.gray.withAlphaComponent(0.9)) //sceneView.scene.rootNode
         grid.draw()
     }
     
