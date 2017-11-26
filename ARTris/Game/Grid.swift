@@ -34,6 +34,7 @@ class Grid {
             pos.y + dim.h / 2,
             -pos.z - dim.l / 2
         )
+
         return node
     }
     
