@@ -88,7 +88,6 @@ class GridShadow {
     
     var scale: CGFloat {
         didSet {
-            //wrapper.position = wrapperPosition ?? redundant
             for (z, n) in x_nodes.enumerated() {
                 n.position = linePos(zInd: z)
                 let box = n.geometry! as! SCNBox

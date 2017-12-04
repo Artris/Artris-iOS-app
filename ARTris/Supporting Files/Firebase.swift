@@ -42,19 +42,19 @@ class Firebase {
     func fetchPositions(engine: Engine?) {
         self.dataRef.observe(.value, with: { [weak engine] snapshot in
             if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
-            let newState = snapshots.map { snap -> [Position?] in
-            if let cells = snap.children.allObjects as? [DataSnapshot] {
-            return cells.map{ cell -> Position? in
-            if let pos = cell.value as? Dictionary<String, Int> {
-            return Position(dict: pos)
+                let newState = snapshots.map { snap -> [Position?] in
+                    if let cells = snap.children.allObjects as? [DataSnapshot] {
+                        return cells.map{ cell -> Position? in
+                            if let pos = cell.value as? Dictionary<String, Int> {
+                                return Position(dict: pos)
+                            }
+                            return nil
+                        }
+                    }
+                    return Array<Position?>()
+                }
+                engine?.state = newState.flatMap { $0.flatMap{ $0 } }
             }
-            return nil
-            }
-            }
-            return Array<Position?>()
-            }
-            engine?.state = newState.flatMap { $0.flatMap{ $0 } }
-            }
-            });
+        });
     }
 }

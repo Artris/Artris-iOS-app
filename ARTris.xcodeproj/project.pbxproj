@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		261C513D1FD4DE7500FFAA95 /* GridTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261C513C1FD4DE7500FFAA95 /* GridTest.swift */; };
+		261C51411FD5316200FFAA95 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 261C51401FD5316200FFAA95 /* LICENSE.txt */; };
+		261C51431FD5319B00FFAA95 /* VirtualObjectARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261C51421FD5319B00FFAA95 /* VirtualObjectARView.swift */; };
 		2678AEC21FBD65C000B92DDB /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2678AEC11FBD65C000B92DDB /* UIViewControllerExtension.swift */; };
 		2678AEC41FBE98AA00B92DDB /* GameSessionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2678AEC31FBE98AA00B92DDB /* GameSessionCell.swift */; };
 		2678AEC61FBE9C2500B92DDB /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2678AEC51FBE9C2500B92DDB /* Firebase.swift */; };
@@ -15,7 +16,6 @@
 		26BE91E71FBA583B00A942EE /* GameSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BE91E61FBA583B00A942EE /* GameSessionViewController.swift */; };
 		26BE91EA1FBA669000A942EE /* GameSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BE91E91FBA669000A942EE /* GameSession.swift */; };
 		26BE91EE1FBA6C9700A942EE /* GameListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BE91ED1FBA6C9700A942EE /* GameListViewController.swift */; };
-		26C4D6441FD11A6600F422D4 /* VirtualObjectARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C4D6431FD11A6600F422D4 /* VirtualObjectARView.swift */; };
 		26C4D6461FD1208300F422D4 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C4D6451FD1208300F422D4 /* Utilities.swift */; };
 		A6040F451FA6DDBD0043B099 /* LocalizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6040F441FA6DDBD0043B099 /* LocalizationViewController.swift */; };
 		A6040F471FA6DDF20043B099 /* GridShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6040F461FA6DDF20043B099 /* GridShadow.swift */; };
@@ -33,7 +33,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		261C513C1FD4DE7500FFAA95 /* GridTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridTest.swift; sourceTree = "<group>"; };
+		261C51401FD5316200FFAA95 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
+		261C51421FD5319B00FFAA95 /* VirtualObjectARView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VirtualObjectARView.swift; sourceTree = "<group>"; };
 		2678AEC11FBD65C000B92DDB /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		2678AEC31FBE98AA00B92DDB /* GameSessionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSessionCell.swift; sourceTree = "<group>"; };
 		2678AEC51FBE9C2500B92DDB /* Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firebase.swift; sourceTree = "<group>"; };
@@ -41,7 +42,6 @@
 		26BE91E61FBA583B00A942EE /* GameSessionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSessionViewController.swift; sourceTree = "<group>"; };
 		26BE91E91FBA669000A942EE /* GameSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSession.swift; sourceTree = "<group>"; };
 		26BE91ED1FBA6C9700A942EE /* GameListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListViewController.swift; sourceTree = "<group>"; };
-		26C4D6431FD11A6600F422D4 /* VirtualObjectARView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VirtualObjectARView.swift; sourceTree = "<group>"; };
 		26C4D6451FD1208300F422D4 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		283E50AC1AD89D7DDDFC4652 /* Pods-ARTris.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARTris.release.xcconfig"; path = "Pods/Target Support Files/Pods-ARTris/Pods-ARTris.release.xcconfig"; sourceTree = "<group>"; };
 		289BC569375D6A88E6D7E4CA /* Pods_ARTris.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ARTris.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -74,18 +74,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		261C513E1FD530CD00FFAA95 /* LicencedFiles */ = {
+			isa = PBXGroup;
+			children = (
+				261C51421FD5319B00FFAA95 /* VirtualObjectARView.swift */,
+				26C4D6451FD1208300F422D4 /* Utilities.swift */,
+				261C513F1FD5316200FFAA95 /* LICENSE */,
+			);
+			path = LicencedFiles;
+			sourceTree = "<group>";
+		};
+		261C513F1FD5316200FFAA95 /* LICENSE */ = {
+			isa = PBXGroup;
+			children = (
+				261C51401FD5316200FFAA95 /* LICENSE.txt */,
+			);
+			path = LICENSE;
+			sourceTree = "<group>";
+		};
+		261C51441FD531F600FFAA95 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				2678AEC11FBD65C000B92DDB /* UIViewControllerExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		26BE91E81FBA665700A942EE /* GameSession */ = {
 			isa = PBXGroup;
 			children = (
+				26BE91ED1FBA6C9700A942EE /* GameListViewController.swift */,
 				26BE91E61FBA583B00A942EE /* GameSessionViewController.swift */,
 				26BE91E91FBA669000A942EE /* GameSession.swift */,
-				26BE91ED1FBA6C9700A942EE /* GameListViewController.swift */,
-				2678AEC11FBD65C000B92DDB /* UIViewControllerExtension.swift */,
 				2678AEC31FBE98AA00B92DDB /* GameSessionCell.swift */,
-				2678AEC51FBE9C2500B92DDB /* Firebase.swift */,
-				26C4D6431FD11A6600F422D4 /* VirtualObjectARView.swift */,
-				26C4D6451FD1208300F422D4 /* Utilities.swift */,
-				261C513C1FD4DE7500FFAA95 /* GridTest.swift */,
 			);
 			path = GameSession;
 			sourceTree = "<group>";
@@ -150,12 +171,15 @@
 		A64153BA1F85E8B500713806 /* ARTris */ = {
 			isa = PBXGroup;
 			children = (
+				261C51441FD531F600FFAA95 /* Extensions */,
+				261C513E1FD530CD00FFAA95 /* LicencedFiles */,
 				26BE91E81FBA665700A942EE /* GameSession */,
 				A6040F431FA6DD880043B099 /* Localization */,
 				A64153CD1F85E91700713806 /* Supporting Files */,
 				A6040F421FA6DCFC0043B099 /* Game */,
 				A64153BF1F85E8B500713806 /* Main.storyboard */,
 				A64153C71F85E8B500713806 /* Info.plist */,
+				26B4A1101FC6917D00CD5C6E /* GoogleService-Info.plist */,
 			);
 			path = ARTris;
 			sourceTree = "<group>";
@@ -163,10 +187,10 @@
 		A64153CD1F85E91700713806 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				2678AEC51FBE9C2500B92DDB /* Firebase.swift */,
 				A64153BB1F85E8B500713806 /* AppDelegate.swift */,
 				A64153C21F85E8B500713806 /* Assets.xcassets */,
 				A64153C41F85E8B500713806 /* LaunchScreen.storyboard */,
-				26B4A1101FC6917D00CD5C6E /* GoogleService-Info.plist */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -236,6 +260,7 @@
 				A64153C61F85E8B500713806 /* LaunchScreen.storyboard in Resources */,
 				26B4A1111FC6917D00CD5C6E /* GoogleService-Info.plist in Resources */,
 				A64153C31F85E8B500713806 /* Assets.xcassets in Resources */,
+				261C51411FD5316200FFAA95 /* LICENSE.txt in Resources */,
 				A64153C11F85E8B500713806 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -306,11 +331,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				2678AEC61FBE9C2500B92DDB /* Firebase.swift in Sources */,
-				26C4D6441FD11A6600F422D4 /* VirtualObjectARView.swift in Sources */,
+				261C51431FD5319B00FFAA95 /* VirtualObjectARView.swift in Sources */,
 				26BE91EA1FBA669000A942EE /* GameSession.swift in Sources */,
 				A64153BE1F85E8B500713806 /* GameViewController.swift in Sources */,
 				2678AEC41FBE98AA00B92DDB /* GameSessionCell.swift in Sources */,
-				261C513D1FD4DE7500FFAA95 /* GridTest.swift in Sources */,
 				A66E60DD1F9375920044D35D /* Action.swift in Sources */,
 				A6E942E71F9310780092A170 /* Blocks.swift in Sources */,
 				A6835ECD1F92FB2500A8A509 /* Grid.swift in Sources */,

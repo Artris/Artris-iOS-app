@@ -14,7 +14,6 @@ class GameSessionViewController: UIViewController {
         super.viewDidLoad()
     }
     
-    //change to localization controller transition
     @IBAction func newGameBtnPressed(_ sender: Any) {
         let gameViewController = storyboard?.instantiateViewController(withIdentifier: "gameViewController") as! GameViewController
         gameViewController.sessionId = "new_game"
