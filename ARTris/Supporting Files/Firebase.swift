@@ -8,20 +8,37 @@
 
 import Firebase
 
-class Firebase {
-    
+class Firebase
+{
     var gameRef: DatabaseReference!
     var dataRef: DatabaseReference!
-    
-    static let sessionsRef = Firebase.ref.child("game-session")
-    static let ref: DatabaseReference = { () -> DatabaseReference in
+    var sessionId: String!
+    var userIDRef: DatabaseReference!
+
+    static let ref: DatabaseReference = {  
         FirebaseApp.configure()
         return Database.database().reference()
     }()
     
-   static func fetchGameSessions(completion: @escaping(_ array: [String]) -> Void){
+    static let gameSessionsRef = Firebase.ref.child("game-session")
+    
+    init(gameId: String = "new_game") {
+        let session = Firebase.gameSessionsRef
+        switch gameId {
+        case "new_game":
+            gameRef = session.childByAutoId()
+            gameRef.setValue("0")
+        default:
+            gameRef = session.child(gameId)
+        }
+        sessionId = gameRef.key
+        dataRef = gameRef.child("grid-render")
+        userIDRef = gameRef.childByAutoId() 
+    }
+    
+    static func fetchGameSessions(completion: @escaping(_ array: [String]) -> Void) {
         var array = [String]()
-        Firebase.sessionsRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            Firebase.gameSessionsRef.observeSingleEvent(of: .value, with: { (snapshot) in
             let value = snapshot.value as? NSDictionary
             let enumerator = value?.keyEnumerator()
             while let item = enumerator?.nextObject() {
@@ -32,11 +49,6 @@ class Firebase {
         }){ (error) in
             print(error.localizedDescription)
         }
-    }
-    
-    init (sessionId: String) {
-         gameRef = Firebase.sessionsRef.child(sessionId)
-         dataRef = gameRef.child("grid-render")
     }
     
     func fetchPositions(engine: Engine?) {
@@ -57,4 +69,11 @@ class Firebase {
             }
         });
     }
+    
+    func pushAction(actionName: String, action: Action) {
+        print("\(actionName) \(action.direction)")
+        userIDRef.child("gestures").child(actionName).childByAutoId().setValue(String(describing: action.direction))
+    }
 }
+    
+

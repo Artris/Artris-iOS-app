@@ -8,8 +8,8 @@
 
 import UIKit
 
-class GameSessionCell: UITableViewCell {
-
+class GameSessionCell: UITableViewCell
+{
     @IBOutlet weak var label: UILabel!
     
     override func awakeFromNib() {

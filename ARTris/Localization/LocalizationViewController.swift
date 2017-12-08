@@ -3,55 +3,57 @@ import Foundation
 import ARKit
 import SceneKit
 
-class LocalizationViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
-
+class LocalizationViewController: UIViewController,ARSessionDelegate
+{
     var shadow: GridShadow!
     var shadowBinder: SCNNode!
     var objectPosition: CGPoint?
+    var rotationRecognizer: UIRotationGestureRecognizer!
+    var sessionId: String!
     
+    @IBOutlet weak var userPromptLabel: UILabel!
+    @IBOutlet weak var backBtn: UIButton!
     @IBOutlet weak var sceneView: VirtualObjectARView! {
         didSet {
             let rotationHandler = #selector(LocalizationViewController.rotate(byReactingTo:))
-            let rotationRecognizer = UIRotationGestureRecognizer(target: self, action: rotationHandler)
+            rotationRecognizer = UIRotationGestureRecognizer(target: self, action: rotationHandler)
             sceneView.addGestureRecognizer(rotationRecognizer)
         }
     }
-    
+    @IBOutlet weak var nextBtn: UIButton! {
+        didSet {
+            nextBtn.isHidden = true
+        }
+    }
+    lazy var gameViewController: GameViewController = {
+        let viewController = storyboard?.instantiateViewController(withIdentifier: "gameViewController") as! GameViewController
+        viewController.sceneView = sceneView
+        viewController.parentNode = shadowBinder
+        viewController.sessionId = sessionId
+        return viewController
+    }()
     var screenCentre: CGPoint {
         let bounds = sceneView.bounds
         return CGPoint(x: bounds.midX,y: bounds.midY)
     }
-
-    @objc func rotate(byReactingTo rotationRecognizer: UIRotationGestureRecognizer) {
-        guard shadowBinder != nil && rotationRecognizer.state == .changed else { return }
-        shadowBinder.eulerAngles.y -= Float(rotationRecognizer.rotation)
-        rotationRecognizer.rotation = 0
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        sceneView.delegate = self
         sceneView.session.delegate = self
         sceneView.scene = SCNScene()
-    
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let configuration = ARWorldTrackingConfiguration()
         sceneView.session.run(configuration)
-        
-        //for debugging
-        let cubeNode = SCNNode(geometry: SCNBox(width: 0.05, height: 0.05, length: 0.05, chamferRadius: 0))
-        cubeNode.position = SCNVector3(0, 0, -0.2)
-        sceneView.scene.rootNode.addChildNode(cubeNode)
-        
     }
-
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         shadowBinder = SCNNode(geometry: nil)
-        shadow = GridShadow(w: 10, l: 10, parent: shadowBinder, size: 0.02, color: UIColor.green)
+        shadow = GridShadow(w: 8, l: 8, parent: shadowBinder, size: 0.02, color: UIColor.green)
+        /*draw the shadow grid but do not add it to the sceneView yet*/
         shadow.draw()
     }
     
@@ -59,39 +61,69 @@ class LocalizationViewController: UIViewController, ARSCNViewDelegate, ARSession
         super.viewWillDisappear(animated)
     }
     
-    func session(_ session: ARSession, didUpdate frame: ARFrame) {
-        let location = screenCentre
-        var objectPosition: float3?
-        let object = float3(shadowBinder.position)
-        /*if the position is default then the object hasn't been placed yet*/
-        if object == float3(0,0,0) {
-            objectPosition = nil
-        }
-        else {
-            objectPosition = object
-        }
-        guard let (worldPosition,_,_) =  sceneView.worldPosition(fromScreenPosition: location, objectPosition: objectPosition)  else { return }
-
-        shadowBinder.position = SCNVector3(worldPosition)
-        if objectPosition != nil {
-            return
-        }
-        sceneView.scene.rootNode.addChildNode(shadowBinder)
+    @objc func rotate(byReactingTo rotationRecognizer: UIRotationGestureRecognizer) {
+        guard shadowBinder != nil && rotationRecognizer.state == .changed else { return }
+        shadowBinder.eulerAngles.y -= Float(rotationRecognizer.rotation)
+        rotationRecognizer.rotation = 0
     }
     
+    var eulerAngle_y: Double = 0
+    func session(_ session: ARSession, didUpdate frame: ARFrame) {
+        if let trackingState = sceneView.session.currentFrame?.camera.trackingState {
+            updateTrackingStateLabel(trackingstate: trackingState)
+        }
+        var objectPosition: float3?
+        let shadowBinderPosition = float3(shadowBinder.position)
+        
+        /*if the position is default then the object hasn't been placed yet*/
+        if shadowBinderPosition == float3(0,0,0) {
+            objectPosition = nil
+        }
+       else {
+            objectPosition = shadowBinderPosition
+        }
+        
+        guard let (worldPosition,_,_) =  sceneView.worldPosition(fromScreenPosition: screenCentre, objectPosition: objectPosition)  else { return }
+        
+        shadowBinder.position = SCNVector3(worldPosition)
+        if objectPosition != nil {
+            nextBtn.isHidden = false
+            return
+        }
+        /*Once a stable position has been found, add the shadowBinder node to the sceneView*/
+        sceneView.scene.rootNode.addChildNode(shadowBinder)
+    }
 
     @IBAction func nextBtnPressed(_ sender: Any) {
-        let gameViewController = storyboard?.instantiateViewController(withIdentifier: "gameViewController") as! GameViewController
-        gameViewController.sessionId = "new_game"
-
-        sceneView.session.pause()
-        //set the references in next view controller
-        gameViewController.session = sceneView.session
-        gameViewController.parentNode = shadowBinder
-        gameViewController.position = shadowBinder.position
-
-        self.presentView(gameViewController)
+        userPromptLabel.isHidden = true
+        nextBtn.isHidden = true
+        /*
+        Set the scene View Delegate to nil to stabilize the position of the grid
+        World tracking is no longer required after the grid has been placed
+        */
+        sceneView.session.delegate = nil
+        updateView()
+    }
+    
+    func updateView() {
+        /*Add and configure the GameViewController as a child view controller*/
+        self.addChildViewController(gameViewController)
+        view.addSubview(gameViewController.view)
+        gameViewController.view.frame = view.bounds
+        view.bringSubview(toFront: backBtn)
+   }
+    
+    func updateTrackingStateLabel(trackingstate: ARCamera.TrackingState) {
+        switch trackingstate {
+        case .normal:
+            userPromptLabel.text = "The tracking state is normal"
+        case .notAvailable:
+            userPromptLabel.text = "Keep moving the device around to find a surface"
+        case .limited:
+            userPromptLabel.text = "Keep moving the device for more accurate results"
+        }
     }
 }
+
 
 

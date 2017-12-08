@@ -14,7 +14,8 @@ protocol InteractionDelegate: class {
     func update(name: String, action: Action)
 }
 
-class Interaction: NSObject, UIGestureRecognizerDelegate {
+class Interaction: NSObject, UIGestureRecognizerDelegate
+{
     let name: String
     let view: UIView
     weak var delegate: InteractionDelegate?

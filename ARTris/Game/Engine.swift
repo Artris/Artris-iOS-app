@@ -35,8 +35,7 @@ class Engine {
         }
     }
 
-    init(sessionId: String = "test") {
-        let firebase = Firebase(sessionId: sessionId)
-        firebase.fetchPositions(engine: self)
+    init(database: Firebase) {
+        database.fetchPositions(engine: self)
     }
 }

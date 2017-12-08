@@ -10,29 +10,20 @@ import UIKit
 import ARKit
 import SceneKit
 
-class GameViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate, InteractionDelegate, EngineDelegate {
-
-    var gameSession: GameSession!
+class GameViewController: UIViewController, InteractionDelegate, EngineDelegate
+{
     var engine: Engine!
     var sessionId: String!
-    
-    //the following variables are set by the presenting view controller
-    var session: ARSession!
     var parentNode: SCNNode!
-    var position: SCNVector3!
+    var firebase: Firebase!
     
     var movementInteraction: Interaction?
     var rotationInteraction: Interaction?
     
-    @IBOutlet weak var sceneView: ARSCNView! {
-        didSet {
-            //Configure sceneView
-            sceneView.session = session
-            sceneView.scene = SCNScene()
-            //run the session
-            sceneView.session.run(sceneView.session.configuration!)
-        }
-    }
+    let scale: CGFloat = 0.02
+    var grid: Grid!
+    var state: Blocks!
+    var sceneView: ARSCNView!
     @IBOutlet weak var movementView: UIView! {
         didSet {
             movementInteraction = Interaction(name: "Move", view: movementView)
@@ -46,44 +37,28 @@ class GameViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate
             rotationInteraction?.delegate = self
         }
     }
-    
-    let scale: CGFloat = 0.02
-    var grid: Grid!
-    var state: Blocks!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //in initialize classes
-        gameSession = GameSession(gameId: sessionId)
-        engine = Engine(sessionId: gameSession.sessionId)
-      
-        //set the delegates
-        sceneView.delegate = self
-        sceneView.session.delegate = self
+        if sessionId != nil {
+            firebase = Firebase(gameId: sessionId)
+        } else { firebase = Firebase() }
+        engine = Engine(database: firebase)
         engine.delegate = self
+        state = Blocks(parent: parentNode, scale: scale)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        //for DEBUGGING
-        let cubeNode = SCNNode(geometry: SCNBox(width: 0.05, height: 0.05, length: 0.05, chamferRadius: 0))
-        cubeNode.position = SCNVector3(0, 0, -0.2)
-        sceneView.scene.rootNode.addChildNode(cubeNode)
-        //add the node to the root node for DEBUGGING
         sceneView.scene.rootNode.addChildNode(parentNode)
-        
-        //draw the grid
-        grid = Grid(w: 10, h: 10, l: 10,
-                    parent: parentNode, scale: scale,
-                    color: UIColor.gray.withAlphaComponent(0.9))
-        grid.draw()
-        state = Blocks(parent: grid.wrapper, scale: scale) 
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        grid = Grid(w: 8, h: 8, l: 8,
+                    parent: parentNode, scale: scale,
+                    color: UIColor.gray.withAlphaComponent(0.9))
+        grid.draw()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -97,7 +72,7 @@ class GameViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate
     }
     
     func update(name: String, action: Action){
-        gameSession.gameRef.child(name).childByAutoId().setValue(String(describing: action.direction))
+        firebase.pushAction(actionName: name, action: action)
     }
     
     func stateChanged(_ state: [Position]) {

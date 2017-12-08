@@ -8,9 +8,11 @@
 
 import SceneKit
 
-class GridShadow {
+class GridShadow
+{
     private let w, l: Int, parent: SCNNode, thicknessRatio: CGFloat, color: UIColor
     private var size: CGFloat
+    
     init(w: Int, l: Int, parent: SCNNode, size: CGFloat, color: UIColor){
         self.w = w; self.l = l
         self.parent = parent

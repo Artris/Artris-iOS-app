@@ -8,14 +8,14 @@
 
 import SceneKit
 
-class Grid {
+class Grid
+{
     private let w, h, l: Int
     private let parent: SCNNode, scale: CGFloat, color: UIColor, size:CGFloat
     private let diameter: CGFloat
     private var nodes: [SCNNode] = []
     
-    init(w: Int, h: Int, l: Int, parent: SCNNode, scale: CGFloat, color: UIColor, diameterRatio: CGFloat = 40.0){
-        
+    init(w: Int, h: Int, l: Int, parent: SCNNode, scale: CGFloat, color: UIColor, diameterRatio: CGFloat = 40.0) {
         self.parent = parent
         self.size = 1.0
         self.scale = scale
@@ -24,12 +24,9 @@ class Grid {
         self.diameter = scale / diameterRatio
     }
     
-    /*****REPETITION OF CODE!*****/
-    
     private var currSize: CGFloat { return scale * size }
     private var width: CGFloat { return currSize * CGFloat(w) }
     private var length: CGFloat { return currSize * CGFloat(l) }
-    
     private var wrapperPosition: SCNVector3 {
         let midW =  width / 2
         let midL =   length / 2
@@ -41,8 +38,6 @@ class Grid {
         parent.addChildNode(node)
         return node
     }()
-    
-    /****************************/
     
     private func line(pos: (x: CGFloat, y: CGFloat, z: CGFloat),
                       dim: (w: CGFloat, h: CGFloat, l: CGFloat)) -> SCNNode {
@@ -56,7 +51,6 @@ class Grid {
             pos.y + dim.h / 2,
             -pos.z - dim.l / 2
         )
-
         return node
     }
     

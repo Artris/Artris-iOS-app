@@ -8,8 +8,8 @@
 
 import UIKit
 
-class GameListViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
-    
+class GameListViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
+{
     var gameSessionsArray:[String] = []
     
     @IBOutlet weak var tableView: UITableView!
@@ -25,7 +25,6 @@ class GameListViewController: UIViewController,UITableViewDataSource,UITableView
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "gameSessionCell") as! GameSessionCell
         cell.label.text = gameSessionsArray[indexPath.row]
         return cell
@@ -33,8 +32,8 @@ class GameListViewController: UIViewController,UITableViewDataSource,UITableView
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let sessionId = gameSessionsArray[indexPath.row]
-        let gameViewController = storyboard?.instantiateViewController(withIdentifier: "gameViewController") as! GameViewController
-        gameViewController.sessionId = sessionId
-        self.presentView(gameViewController)
+        let localizationViewController = storyboard?.instantiateViewController(withIdentifier: "localizationViewController") as! LocalizationViewController
+        localizationViewController.sessionId = sessionId
+        self.present(localizationViewController, animated: false, completion: nil)
     }
 }

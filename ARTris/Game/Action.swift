@@ -9,7 +9,8 @@
 import UIKit
 import ARKit
 
-struct Action: Hashable {
+struct Action: Hashable
+{
     let swipe: UISwipeGestureRecognizerDirection
     let orientation: Int
     

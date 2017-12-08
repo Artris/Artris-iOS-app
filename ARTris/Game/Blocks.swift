@@ -8,7 +8,8 @@
 
 import SceneKit
 
-class Blocks {
+class Blocks
+{
     private let parent: SCNNode
     private let scale: CGFloat
     private let chamferRadius: CGFloat

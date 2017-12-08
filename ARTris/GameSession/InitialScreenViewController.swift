@@ -8,23 +8,22 @@
 
 import UIKit
 
-class GameSessionViewController: UIViewController {
-    
+class InitialScreenViewController: UIViewController
+{
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     @IBAction func newGameBtnPressed(_ sender: Any) {
-        let gameViewController = storyboard?.instantiateViewController(withIdentifier: "gameViewController") as! GameViewController
-        gameViewController.sessionId = "new_game"
-        self.presentView(gameViewController)
+        let gameViewController = storyboard?.instantiateViewController(withIdentifier: "localizationViewController") as! LocalizationViewController
+        self.present(gameViewController, animated: false, completion: nil)
     }
     
     @IBAction func findGameBtnPressed(_ sender: Any) {
         let gameListViewController = storyboard?.instantiateViewController(withIdentifier: "gameListViewController") as! GameListViewController
             Firebase.fetchGameSessions(completion: { array in
             gameListViewController.gameSessionsArray = array
-            self.presentView(gameListViewController)
+            self.present(gameListViewController, animated: false, completion: nil)
         })
     }
 }
