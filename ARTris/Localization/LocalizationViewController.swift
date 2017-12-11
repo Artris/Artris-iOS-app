@@ -5,10 +5,10 @@ import SceneKit
 
 class LocalizationViewController: UIViewController,ARSessionDelegate
 {
-    var shadow: GridShadow!
-    var shadowBinder: SCNNode!
-    var objectPosition: CGPoint?
-    var rotationRecognizer: UIRotationGestureRecognizer!
+    private var shadow: GridShadow!
+    private var shadowBinder: SCNNode!
+    private var objectPosition: CGPoint?
+    private var rotationRecognizer: UIRotationGestureRecognizer!
     var sessionId: String!
     
     @IBOutlet weak var userPromptLabel: UILabel!
@@ -25,16 +25,16 @@ class LocalizationViewController: UIViewController,ARSessionDelegate
             nextBtn.isHidden = true
         }
     }
-    lazy var gameViewController: GameViewController = {
+    private lazy var gameViewController: GameViewController = {
         let viewController = storyboard?.instantiateViewController(withIdentifier: "gameViewController") as! GameViewController
         viewController.sceneView = sceneView
         viewController.parentNode = shadowBinder
         viewController.sessionId = sessionId
         return viewController
     }()
-    var screenCentre: CGPoint {
+    private var screenCentre: CGPoint {
         let bounds = sceneView.bounds
-        return CGPoint(x: bounds.midX,y: bounds.midY)
+        return CGPoint(x: bounds.midX, y: bounds.midY)
     }
     
     override func viewDidLoad() {
@@ -53,7 +53,7 @@ class LocalizationViewController: UIViewController,ARSessionDelegate
         super.viewDidAppear(animated)
         shadowBinder = SCNNode(geometry: nil)
         shadow = GridShadow(w: 8, l: 8, parent: shadowBinder, size: 0.02, color: UIColor.green)
-        /*draw the shadow grid but do not add it to the sceneView yet*/
+        /*draw the shadow grid but do not add its parent node to the ARSCNView yet*/
         shadow.draw()
     }
     
@@ -61,13 +61,6 @@ class LocalizationViewController: UIViewController,ARSessionDelegate
         super.viewWillDisappear(animated)
     }
     
-    @objc func rotate(byReactingTo rotationRecognizer: UIRotationGestureRecognizer) {
-        guard shadowBinder != nil && rotationRecognizer.state == .changed else { return }
-        shadowBinder.eulerAngles.y -= Float(rotationRecognizer.rotation)
-        rotationRecognizer.rotation = 0
-    }
-    
-    var eulerAngle_y: Double = 0
     func session(_ session: ARSession, didUpdate frame: ARFrame) {
         if let trackingState = sceneView.session.currentFrame?.camera.trackingState {
             updateTrackingStateLabel(trackingstate: trackingState)
@@ -75,53 +68,60 @@ class LocalizationViewController: UIViewController,ARSessionDelegate
         var objectPosition: float3?
         let shadowBinderPosition = float3(shadowBinder.position)
         
-        /*if the position is default then the object hasn't been placed yet*/
-        if shadowBinderPosition == float3(0,0,0) {
-            objectPosition = nil
-        }
-       else {
+        /*If the position of the shadow binder is the default vector: (0,0,0), keep the objectPosition as nil*/
+        if shadowBinderPosition != float3(0,0,0) {
             objectPosition = shadowBinderPosition
         }
         
-        guard let (worldPosition,_,_) =  sceneView.worldPosition(fromScreenPosition: screenCentre, objectPosition: objectPosition)  else { return }
-        
+        /*Perform a hit test at the screen centre*/
+        guard let (worldPosition,_,_) =  sceneView.worldPosition(fromScreenPosition: screenCentre, objectPosition: objectPosition) else { return }
+        /*update the position of the shadow binder*/
         shadowBinder.position = SCNVector3(worldPosition)
+        
+        /*Once the object has been placed, the "next" button should appear to allow the user to transition to gameplay*/
         if objectPosition != nil {
             nextBtn.isHidden = false
             return
         }
-        /*Once a stable position has been found, add the shadowBinder node to the sceneView*/
+        /*Once the hit test returns a position, add the shadowBinder node to the ARSCNView*/
         sceneView.scene.rootNode.addChildNode(shadowBinder)
     }
-
-    @IBAction func nextBtnPressed(_ sender: Any) {
-        userPromptLabel.isHidden = true
-        nextBtn.isHidden = true
-        /*
-        Set the scene View Delegate to nil to stabilize the position of the grid
-        World tracking is no longer required after the grid has been placed
-        */
-        sceneView.session.delegate = nil
-        updateView()
+    
+    @objc private func rotate(byReactingTo rotationRecognizer: UIRotationGestureRecognizer) {
+        guard shadowBinder != nil && rotationRecognizer.state == .changed else { return }
+        shadowBinder.eulerAngles.y -= Float(rotationRecognizer.rotation)
+        rotationRecognizer.rotation = 0
     }
     
-    func updateView() {
-        /*Add and configure the GameViewController as a child view controller*/
+    private func updateView() {
+        /*Add the GameViewController as a child viewcontroller*/
         self.addChildViewController(gameViewController)
         view.addSubview(gameViewController.view)
         gameViewController.view.frame = view.bounds
-        view.bringSubview(toFront: backBtn)
    }
     
-    func updateTrackingStateLabel(trackingstate: ARCamera.TrackingState) {
+    private func updateTrackingStateLabel(trackingstate: ARCamera.TrackingState) {
         switch trackingstate {
         case .normal:
             userPromptLabel.text = "The tracking state is normal"
         case .notAvailable:
-            userPromptLabel.text = "Keep moving the device around to find a surface"
+            userPromptLabel.text = "The tracking state is not available ... "
         case .limited:
-            userPromptLabel.text = "Keep moving the device for more accurate results"
+            userPromptLabel.text = "The tracking state is limited ... "
         }
+    }
+    
+    @IBAction func nextBtnPressed(_ sender: Any) {
+        userPromptLabel.isHidden = true
+        nextBtn.isHidden = true
+        /*Set the ARSession Delegate to nil to stabilize the position of the grid*/
+        sceneView.session.delegate = nil
+        updateView()
+        view.bringSubview(toFront: backBtn)
+    }
+    
+    @IBAction func backBtnPressed(_ sender: Any) {
+         self.performSegue(withIdentifier: "unwindToInitialScene", sender: self)
     }
 }
 

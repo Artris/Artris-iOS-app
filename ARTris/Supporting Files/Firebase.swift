@@ -12,10 +12,10 @@ class Firebase
 {
     var gameRef: DatabaseReference!
     var dataRef: DatabaseReference!
-    var sessionId: String!
     var userIDRef: DatabaseReference!
-
-    static let ref: DatabaseReference = {  
+    var sessionId: String!
+    
+    static let ref: DatabaseReference = {
         FirebaseApp.configure()
         return Database.database().reference()
     }()
@@ -27,7 +27,7 @@ class Firebase
         switch gameId {
         case "new_game":
             gameRef = session.childByAutoId()
-            gameRef.setValue("0")
+            gameRef.setValue("initial push")
         default:
             gameRef = session.child(gameId)
         }
@@ -36,7 +36,7 @@ class Firebase
         userIDRef = gameRef.childByAutoId() 
     }
     
-    static func fetchGameSessions(completion: @escaping(_ array: [String]) -> Void) {
+    static public func fetchGameSessions(completion: @escaping(_ array: [String]) -> Void) {
         var array = [String]()
             Firebase.gameSessionsRef.observeSingleEvent(of: .value, with: { (snapshot) in
             let value = snapshot.value as? NSDictionary
@@ -51,7 +51,7 @@ class Firebase
         }
     }
     
-    func fetchPositions(engine: Engine?) {
+    public func fetchPositions(engine: Engine?) {
         self.dataRef.observe(.value, with: { [weak engine] snapshot in
             if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
                 let newState = snapshots.map { snap -> [Position?] in
@@ -70,7 +70,7 @@ class Firebase
         });
     }
     
-    func pushAction(actionName: String, action: Action) {
+    public func pushAction(actionName: String, action: Action) {
         print("\(actionName) \(action.direction)")
         userIDRef.child("gestures").child(actionName).childByAutoId().setValue(String(describing: action.direction))
     }

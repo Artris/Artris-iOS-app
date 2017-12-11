@@ -10,27 +10,28 @@ import UIKit
 import ARKit
 import SceneKit
 
-class GameViewController: UIViewController, InteractionDelegate, EngineDelegate
+class GameViewController: UIViewController, InteractionDelegate, EngineDelegate, ARSessionDelegate
 {
-    var engine: Engine!
-    var sessionId: String!
-    var parentNode: SCNNode!
-    var firebase: Firebase!
-    
-    var movementInteraction: Interaction?
-    var rotationInteraction: Interaction?
-    
-    let scale: CGFloat = 0.02
-    var grid: Grid!
-    var state: Blocks!
+    private var engine: Engine!
+    private var firebase: Firebase!
+    private var grid: Grid!
+    private var state: Blocks!
     var sceneView: ARSCNView!
+    var sessionId: String!
+    
+    private var movementInteraction: Interaction?
+    private var rotationInteraction: Interaction?
+    
+    var scale: CGFloat = 0.02
+    var parentNode: SCNNode!
+    var eulerAngle_y: Double = 0
+
     @IBOutlet weak var movementView: UIView! {
         didSet {
             movementInteraction = Interaction(name: "Move", view: movementView)
             movementInteraction?.delegate = self
         }
     }
-    
     @IBOutlet weak var rotationView: UIView! {
         didSet {
             rotationInteraction = Interaction(name: "Rotate", view: rotationView)
@@ -44,8 +45,9 @@ class GameViewController: UIViewController, InteractionDelegate, EngineDelegate
             firebase = Firebase(gameId: sessionId)
         } else { firebase = Firebase() }
         engine = Engine(database: firebase)
-        engine.delegate = self
         state = Blocks(parent: parentNode, scale: scale)
+        engine.delegate = self
+        sceneView.session.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -66,8 +68,7 @@ class GameViewController: UIViewController, InteractionDelegate, EngineDelegate
         sceneView.session.pause()
     }
     
-    var eulerAngle_y: Double = 0
-    @objc public func session(_ session: ARSession, didUpdate frame: ARFrame){
+    @objc public func session(_ session: ARSession, didUpdate frame: ARFrame) { 
         eulerAngle_y = Double(frame.camera.eulerAngles.y)
     }
     

@@ -36,4 +36,17 @@ class GameListViewController: UIViewController,UITableViewDataSource,UITableView
         localizationViewController.sessionId = sessionId
         self.present(localizationViewController, animated: false, completion: nil)
     }
+
+    @IBAction func backBtnPressed(_ sender: Any) {
+         self.performSegue(withIdentifier: "unwindToInitialScene", sender: self)
+    }
+}
+
+class GameSessionCell: UITableViewCell
+{
+    @IBOutlet weak var label: UILabel!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
 }
