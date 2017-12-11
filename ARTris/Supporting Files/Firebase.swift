@@ -12,10 +12,10 @@ class Firebase
 {
     var gameRef: DatabaseReference!
     var dataRef: DatabaseReference!
-    var sessionId: String!
     var userIDRef: DatabaseReference!
-
-    static let ref: DatabaseReference = {  
+    var sessionId: String!
+    
+    static let ref: DatabaseReference = {
         FirebaseApp.configure()
         return Database.database().reference()
     }()
@@ -27,7 +27,7 @@ class Firebase
         switch gameId {
         case "new_game":
             gameRef = session.childByAutoId()
-            gameRef.setValue("0")
+            gameRef.setValue("initial push")
         default:
             gameRef = session.child(gameId)
         }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class InitialScreenViewController: UIViewController
+class InitialSceneViewController: UIViewController
 {
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,4 +26,6 @@ class InitialScreenViewController: UIViewController
             self.present(gameListViewController, animated: false, completion: nil)
         })
     }
+    
+    @IBAction func unwindToInitialScene(segue: UIStoryboardSegue) {}
 }

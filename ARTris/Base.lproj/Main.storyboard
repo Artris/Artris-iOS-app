@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3XY-Ky-nrp">
-    <device id="ipad12_9" orientation="landscape">
+    <device id="ipad10_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -14,39 +14,39 @@
             <objects>
                 <viewController storyboardIdentifier="gameListViewController" id="CyU-zi-Spu" customClass="GameListViewController" customModule="ARTris" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="p82-B5-2jx">
-                        <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="834" height="1112"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Game Sessions" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h8W-cG-AnX">
-                                <rect key="frame" x="551" y="40" width="265" height="60"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <rect key="frame" x="364.5" y="40" width="105" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.49459295349999999" green="0.88059168779999997" blue="0.82808325770000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="Rhk-RT-hAr">
-                                <rect key="frame" x="20" y="40" width="86" height="60"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <rect key="frame" x="20" y="40" width="34" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="Back">
                                     <color key="titleColor" red="0.49459295349999999" green="0.88059168779999997" blue="0.82808325770000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
                                 <connections>
-                                    <segue destination="3XY-Ky-nrp" kind="show" animates="NO" id="gX0-n0-dXG"/>
+                                    <action selector="backBtnPressed:" destination="CyU-zi-Spu" eventType="touchUpInside" id="PA1-XY-aVr"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3QT-rW-O4n">
-                                <rect key="frame" x="0.0" y="100" width="1366" height="924"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="71" estimatedRowHeight="200" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3QT-rW-O4n">
+                                <rect key="frame" x="0.0" y="70" width="834" height="1042"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="110" reuseIdentifier="gameSessionCell" rowHeight="201" id="e57-bt-aH4" customClass="GameSessionCell" customModule="ARTris" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="1366" height="201"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="110" reuseIdentifier="gameSessionCell" rowHeight="71" id="e57-bt-aH4" customClass="GameSessionCell" customModule="ARTris" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="834" height="71"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="e57-bt-aH4" id="JmB-dz-d5Y">
-                                            <rect key="frame" x="0.0" y="0.0" width="1366" height="200.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="834" height="70.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XMk-m5-w5o">
-                                                    <rect key="frame" x="0.0" y="101" width="1366" height="0.0"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                    <rect key="frame" x="0.0" y="35.5" width="1024" height="0.0"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -81,44 +81,46 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="3QT-rW-O4n" id="XFy-NA-QN1"/>
+                        <segue destination="MUG-fy-aIe" kind="unwind" identifier="unwindToInitialScene" animates="NO" unwindAction="unwindToInitialSceneWithSegue:" id="BA5-Hs-Pmu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RZu-we-Dos" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="MUG-fy-aIe" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="195.90043923865298" y="436.5234375"/>
+            <point key="canvasLocation" x="195.6521739130435" y="436.14130434782612"/>
         </scene>
         <!--Localization View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController storyboardIdentifier="localizationViewController" id="BYZ-38-t0r" customClass="LocalizationViewController" customModule="ARTris" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="834" height="1112"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J2q-C1-onU" customClass="VirtualObjectARView" customModule="ARTris" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="20" width="1366" height="1004"/>
+                                <rect key="frame" x="0.0" y="20" width="834" height="1092"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </arscnView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Prompt" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AO9-hK-mMg">
-                                <rect key="frame" x="20" y="974" width="135" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <rect key="frame" x="20" y="1080" width="61" height="12"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="4xj-nm-uw3">
-                                <rect key="frame" x="20" y="40" width="86" height="60"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <rect key="frame" x="20" y="40" width="34" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="Back">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="3XY-Ky-nrp" kind="show" animates="NO" id="3Lh-qZ-H9P"/>
+                                    <action selector="backBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XkE-x1-qAN"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="aAu-1x-OXf">
-                                <rect key="frame" x="1265" y="40" width="81" height="60"/>
+                                <rect key="frame" x="782" y="40" width="32" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="Next">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -127,7 +129,6 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="aAu-1x-OXf" secondAttribute="trailing" constant="20" id="08T-0b-zMM"/>
                             <constraint firstItem="4xj-nm-uw3" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="BFK-2K-daS"/>
@@ -142,13 +143,15 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="backBtn" destination="4xj-nm-uw3" id="lYp-83-p2T"/>
+                        <outlet property="backBtn" destination="4xj-nm-uw3" id="cMV-e3-ePL"/>
                         <outlet property="nextBtn" destination="aAu-1x-OXf" id="G12-4c-qCc"/>
                         <outlet property="sceneView" destination="J2q-C1-onU" id="cVu-Oe-aXL"/>
                         <outlet property="userPromptLabel" destination="AO9-hK-mMg" id="x33-E3-g5O"/>
+                        <segue destination="iYw-Vd-9jc" kind="unwind" identifier="unwindToInitialScene" animates="NO" unwindAction="unwindToInitialSceneWithSegue:" id="MF1-WC-Qj1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <exit id="iYw-Vd-9jc" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="904" y="-362"/>
         </scene>
@@ -157,17 +160,17 @@
             <objects>
                 <viewController storyboardIdentifier="gameViewController" id="Ncj-vX-3ny" customClass="GameViewController" customModule="ARTris" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" opaque="NO" contentMode="scaleToFill" id="lRr-Cd-ZwY">
-                        <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="834" height="1112"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleAspectFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="lDy-tX-GOY">
-                                <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
+                                <rect key="frame" x="0.0" y="0.0" width="834" height="1112"/>
                                 <subviews>
                                     <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tAg-9d-Afy">
-                                        <rect key="frame" x="0.0" y="0.0" width="683" height="1024"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="417" height="1112"/>
                                     </view>
                                     <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IFz-Xv-Q3Q">
-                                        <rect key="frame" x="683" y="0.0" width="683" height="1024"/>
+                                        <rect key="frame" x="417" y="0.0" width="417" height="1112"/>
                                     </view>
                                 </subviews>
                             </stackView>
@@ -190,24 +193,24 @@
             </objects>
             <point key="canvasLocation" x="903.95314787701307" y="436.5234375"/>
         </scene>
-        <!--Initial Screen View Controller-->
+        <!--Initial Scene View Controller-->
         <scene sceneID="mbp-DA-oWt">
             <objects>
-                <viewController id="3XY-Ky-nrp" customClass="InitialScreenViewController" customModule="ARTris" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="3XY-Ky-nrp" customClass="InitialSceneViewController" customModule="ARTris" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JHV-Dx-Pac">
-                        <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="834" height="1112"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="geR-i2-tXw">
-                                <rect key="frame" x="521.5" y="406.5" width="323" height="211"/>
+                                <rect key="frame" x="345.5" y="498" width="143" height="116"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tjy-vf-gqE">
-                                        <rect key="frame" x="0.0" y="0.0" width="323" height="95"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="143" height="48"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="lessThanOrEqual" constant="980" id="AKO-ST-Efc"/>
                                             <constraint firstAttribute="height" relation="lessThanOrEqual" constant="250" id="pUP-M7-2vF"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="69"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <state key="normal" title="New Game">
                                             <color key="titleColor" red="0.49459295349999999" green="0.88059168779999997" blue="0.82808325770000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
@@ -216,12 +219,12 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vaw-UT-xRy">
-                                        <rect key="frame" x="0.0" y="115" width="323" height="96"/>
+                                        <rect key="frame" x="0.0" y="68" width="143" height="48"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="lessThanOrEqual" constant="980" id="dwi-Cz-LUI"/>
                                             <constraint firstAttribute="height" relation="lessThanOrEqual" constant="250" id="pRO-ZN-fDR"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="70"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <state key="normal" title="Find Game">
                                             <color key="titleColor" red="0.49459295349999999" green="0.88059168779999997" blue="0.82808325770000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
@@ -246,7 +249,4 @@
             <point key="canvasLocation" x="196" y="-362"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="gX0-n0-dXG"/>
-    </inferredMetricsTieBreakers>
 </document>

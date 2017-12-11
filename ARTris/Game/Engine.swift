@@ -8,7 +8,8 @@
 
 import Foundation
 
-class Position: NSObject {
+class Position: NSObject
+{
     let x, y, z, col: Int
     init? (dict: [String: Int]){
         if let x = dict["x"], let y = dict["z"], let z = dict["y"], let col = dict["col"] {
@@ -26,8 +27,8 @@ protocol EngineDelegate: class {
     func stateChanged(_ state: [Position])
 }
 
-class Engine {
-    
+class Engine
+{
     weak var delegate: EngineDelegate?
     var state: [Position] = [] {
         didSet {
