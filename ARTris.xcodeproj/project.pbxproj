@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		26084AD71FE2490600DCC518 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 26084AD61FE2490600DCC518 /* GoogleService-Info.plist */; };
 		261C51411FD5316200FFAA95 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 261C51401FD5316200FFAA95 /* LICENSE.txt */; };
 		261C51431FD5319B00FFAA95 /* VirtualObjectARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261C51421FD5319B00FFAA95 /* VirtualObjectARView.swift */; };
 		264397871FDBC89B00161476 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264397861FDBC89B00161476 /* GameViewController.swift */; };
 		2643978B1FDBC90000161476 /* LocalizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2643978A1FDBC90000161476 /* LocalizationViewController.swift */; };
 		2678AEC61FBE9C2500B92DDB /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2678AEC51FBE9C2500B92DDB /* Firebase.swift */; };
-		26B4A1111FC6917D00CD5C6E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 26B4A1101FC6917D00CD5C6E /* GoogleService-Info.plist */; };
 		26BE91E71FBA583B00A942EE /* InitialSceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BE91E61FBA583B00A942EE /* InitialSceneViewController.swift */; };
 		26BE91EE1FBA6C9700A942EE /* GameSessionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BE91ED1FBA6C9700A942EE /* GameSessionList.swift */; };
 		26C4D6461FD1208300F422D4 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C4D6451FD1208300F422D4 /* Utilities.swift */; };
@@ -30,12 +30,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		26084AD61FE2490600DCC518 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		261C51401FD5316200FFAA95 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		261C51421FD5319B00FFAA95 /* VirtualObjectARView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VirtualObjectARView.swift; sourceTree = "<group>"; };
 		264397861FDBC89B00161476 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		2643978A1FDBC90000161476 /* LocalizationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizationViewController.swift; sourceTree = "<group>"; };
 		2678AEC51FBE9C2500B92DDB /* Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firebase.swift; sourceTree = "<group>"; };
-		26B4A1101FC6917D00CD5C6E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		26BE91E61FBA583B00A942EE /* InitialSceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialSceneViewController.swift; sourceTree = "<group>"; };
 		26BE91ED1FBA6C9700A942EE /* GameSessionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSessionList.swift; sourceTree = "<group>"; };
 		26C4D6451FD1208300F422D4 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
@@ -162,9 +162,9 @@
 				A64153CD1F85E91700713806 /* Supporting Files */,
 				A64153BF1F85E8B500713806 /* Main.storyboard */,
 				A64153C41F85E8B500713806 /* LaunchScreen.storyboard */,
+				26084AD61FE2490600DCC518 /* GoogleService-Info.plist */,
 				A64153C21F85E8B500713806 /* Assets.xcassets */,
 				A64153C71F85E8B500713806 /* Info.plist */,
-				26B4A1101FC6917D00CD5C6E /* GoogleService-Info.plist */,
 			);
 			path = ARTris;
 			sourceTree = "<group>";
@@ -241,8 +241,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A64153C61F85E8B500713806 /* LaunchScreen.storyboard in Resources */,
-				26B4A1111FC6917D00CD5C6E /* GoogleService-Info.plist in Resources */,
 				A64153C31F85E8B500713806 /* Assets.xcassets in Resources */,
+				26084AD71FE2490600DCC518 /* GoogleService-Info.plist in Resources */,
 				261C51411FD5316200FFAA95 /* LICENSE.txt in Resources */,
 				A64153C11F85E8B500713806 /* Main.storyboard in Resources */,
 			);

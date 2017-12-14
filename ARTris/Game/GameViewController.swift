@@ -18,13 +18,15 @@ class GameViewController: UIViewController, InteractionDelegate, EngineDelegate,
     private var state: Blocks!
     var sceneView: ARSCNView!
     var sessionId: String!
+    var eulerAngleofNode_y: Double!
+    
+    var eulerAngle_y: Double = 0
     
     private var movementInteraction: Interaction?
     private var rotationInteraction: Interaction?
     
     var scale: CGFloat = 0.02
     var parentNode: SCNNode!
-    var eulerAngle_y: Double = 0
 
     @IBOutlet weak var movementView: UIView! {
         didSet {
@@ -47,6 +49,7 @@ class GameViewController: UIViewController, InteractionDelegate, EngineDelegate,
         engine = Engine(database: firebase)
         state = Blocks(parent: parentNode, scale: scale)
         engine.delegate = self
+        eulerAngleofNode_y = Double(parentNode.eulerAngles.y)
         sceneView.session.delegate = self
     }
     
@@ -69,7 +72,7 @@ class GameViewController: UIViewController, InteractionDelegate, EngineDelegate,
     }
     
     @objc public func session(_ session: ARSession, didUpdate frame: ARFrame) { 
-        eulerAngle_y = Double(frame.camera.eulerAngles.y)
+        eulerAngle_y =  Double(frame.camera.eulerAngles.y) + eulerAngleofNode_y
     }
     
     func update(name: String, action: Action){
