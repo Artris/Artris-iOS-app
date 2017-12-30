@@ -14,20 +14,17 @@ class GameViewController: UIViewController, InteractionDelegate, EngineDelegate,
 {
     private var engine: Engine!
     private var firebase: Firebase!
-    private var grid: Grid!
+    private var grid: GridShadow!
     private var state: Blocks!
     var sceneView: ARSCNView!
-    var sessionId: String!
-    var eulerAngleofNode_y: Double!
-    
-    var eulerAngle_y: Double = 0
+    var sessionId: String?
+    var parentNode: SCNNode!
+    var eulerAngle: Double = 0.0
+    private var gridRotationAngle: Double!
     
     private var movementInteraction: Interaction?
     private var rotationInteraction: Interaction?
-    
-    var scale: CGFloat = 0.02
-    var parentNode: SCNNode!
-
+   
     @IBOutlet weak var movementView: UIView! {
         didSet {
             movementInteraction = Interaction(name: "Move", view: movementView)
@@ -43,13 +40,11 @@ class GameViewController: UIViewController, InteractionDelegate, EngineDelegate,
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        if sessionId != nil {
-            firebase = Firebase(gameId: sessionId)
-        } else { firebase = Firebase() }
+        firebase = Firebase(gameId: sessionId)
         engine = Engine(database: firebase)
-        state = Blocks(parent: parentNode, scale: scale)
+        state = Blocks(parent: parentNode)
         engine.delegate = self
-        eulerAngleofNode_y = Double(parentNode.eulerAngles.y)
+        gridRotationAngle = Double(parentNode.eulerAngles.y)
         sceneView.session.delegate = self
     }
     
@@ -60,9 +55,7 @@ class GameViewController: UIViewController, InteractionDelegate, EngineDelegate,
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        grid = Grid(w: 8, h: 8, l: 8,
-                    parent: parentNode, scale: scale,
-                    color: UIColor.gray.withAlphaComponent(0.9))
+        grid = GridShadow(parent: parentNode, geometry: .threeD)
         grid.draw()
     }
     
@@ -72,7 +65,7 @@ class GameViewController: UIViewController, InteractionDelegate, EngineDelegate,
     }
     
     @objc public func session(_ session: ARSession, didUpdate frame: ARFrame) { 
-        eulerAngle_y =  Double(frame.camera.eulerAngles.y) + eulerAngleofNode_y
+        eulerAngle =  Double(frame.camera.eulerAngles.y) + gridRotationAngle
     }
     
     func update(name: String, action: Action){

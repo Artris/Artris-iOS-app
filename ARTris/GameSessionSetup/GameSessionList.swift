@@ -11,7 +11,6 @@ import UIKit
 class GameListViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
 {
     var gameSessionsArray:[String] = []
-    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {

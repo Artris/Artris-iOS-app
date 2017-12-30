@@ -10,45 +10,38 @@ import Firebase
 
 class Firebase
 {
-    var gameRef: DatabaseReference!
-    var dataRef: DatabaseReference!
-    var userIDRef: DatabaseReference!
-    var sessionId: String!
+    private var gameRef: DatabaseReference!
+    private var dataRef: DatabaseReference!
+    private var userIDRef: DatabaseReference!
     
-    static let ref: DatabaseReference = {
+    static private let ref: DatabaseReference = {
         FirebaseApp.configure()
         return Database.database().reference()
     }()
     
-    static let gameSessionsRef = Firebase.ref.child("game-session")
+    static private let gameSessionsRef = Firebase.ref.child("game-session")
     
-    init(gameId: String = "new_game") {
+    init(gameId: String?) {
         let session = Firebase.gameSessionsRef
-        switch gameId {
-        case "new_game":
+        if let gameId = gameId {
+            gameRef = session.child(gameId)
+        } else {
             gameRef = session.childByAutoId()
             gameRef.setValue("initial push")
-        default:
-            gameRef = session.child(gameId)
         }
-        sessionId = gameRef.key
         dataRef = gameRef.child("grid-render")
         userIDRef = gameRef.childByAutoId() 
     }
     
     static public func fetchGameSessions(completion: @escaping(_ array: [String]) -> Void) {
-        var array = [String]()
-            Firebase.gameSessionsRef.observeSingleEvent(of: .value, with: { (snapshot) in
-            let value = snapshot.value as? NSDictionary
-            let enumerator = value?.keyEnumerator()
-            while let item = enumerator?.nextObject() {
-                let key = item as! String
-                array.append(key)
+        Firebase.gameSessionsRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            let snapshots = snapshot.value as? NSDictionary
+            if let array = snapshots?.allKeys as? [String] {
+                completion(array)
+            } else {
+                completion([String]())
             }
-            completion(array)
-        }){ (error) in
-            print(error.localizedDescription)
-        }
+        })
     }
     
     public func fetchPositions(engine: Engine?) {
@@ -67,7 +60,7 @@ class Firebase
                 }
                 engine?.state = newState.flatMap { $0.flatMap{ $0 } }
             }
-        });
+        }) 
     }
     
     public func pushAction(actionName: String, action: Action) {
@@ -75,5 +68,5 @@ class Firebase
         userIDRef.child("gestures").child(actionName).childByAutoId().setValue(String(describing: action.direction))
     }
 }
-    
+
 

@@ -35,7 +35,7 @@ class Engine
             delegate?.stateChanged(state)
         }
     }
-
+    
     init(database: Firebase) {
         database.fetchPositions(engine: self)
     }

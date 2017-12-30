@@ -7,8 +7,10 @@ class LocalizationViewController: UIViewController,ARSessionDelegate
 {
     private var shadow: GridShadow!
     private var shadowBinder: SCNNode!
-    private var objectPosition: CGPoint?
     private var rotationRecognizer: UIRotationGestureRecognizer!
+    private var objectPosition: float3?
+    private var objectHasBeenPlaced = false
+    private var defaultPlacement = float3(0,0,0)
     var sessionId: String!
     
     @IBOutlet weak var userPromptLabel: UILabel!
@@ -25,6 +27,7 @@ class LocalizationViewController: UIViewController,ARSessionDelegate
             nextBtn.isHidden = true
         }
     }
+    
     private lazy var gameViewController: GameViewController = {
         let viewController = storyboard?.instantiateViewController(withIdentifier: "gameViewController") as! GameViewController
         viewController.sceneView = sceneView
@@ -52,8 +55,7 @@ class LocalizationViewController: UIViewController,ARSessionDelegate
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         shadowBinder = SCNNode(geometry: nil)
-        shadow = GridShadow(w: 8, l: 8, parent: shadowBinder, size: 0.02, color: UIColor.green)
-        /*draw the shadow grid but do not add its parent node to the ARSCNView yet*/
+        shadow = GridShadow(parent: shadowBinder, geometry: .twoD)
         shadow.draw()
     }
     
@@ -65,25 +67,17 @@ class LocalizationViewController: UIViewController,ARSessionDelegate
         if let trackingState = sceneView.session.currentFrame?.camera.trackingState {
             updateTrackingStateLabel(trackingstate: trackingState)
         }
-        var objectPosition: float3?
         let shadowBinderPosition = float3(shadowBinder.position)
-        
-        /*If the position of the shadow binder is the default vector: (0,0,0), keep the objectPosition as nil*/
-        if shadowBinderPosition != float3(0,0,0) {
+        if shadowBinderPosition != defaultPlacement {
             objectPosition = shadowBinderPosition
+            objectHasBeenPlaced = true
         }
-        
-        /*Perform a hit test at the screen centre*/
         guard let (worldPosition,_,_) =  sceneView.worldPosition(fromScreenPosition: screenCentre, objectPosition: objectPosition) else { return }
-        /*update the position of the shadow binder*/
         shadowBinder.position = SCNVector3(worldPosition)
-        
-        /*Once the object has been placed, the "next" button should appear to allow the user to transition to gameplay*/
-        if objectPosition != nil {
+        if objectHasBeenPlaced {
             nextBtn.isHidden = false
             return
         }
-        /*Once the hit test returns a position, add the shadowBinder node to the ARSCNView*/
         sceneView.scene.rootNode.addChildNode(shadowBinder)
     }
     
@@ -94,7 +88,6 @@ class LocalizationViewController: UIViewController,ARSessionDelegate
     }
     
     private func updateView() {
-        /*Add the GameViewController as a child viewcontroller*/
         self.addChildViewController(gameViewController)
         view.addSubview(gameViewController.view)
         gameViewController.view.frame = view.bounds
@@ -114,7 +107,6 @@ class LocalizationViewController: UIViewController,ARSessionDelegate
     @IBAction func nextBtnPressed(_ sender: Any) {
         userPromptLabel.isHidden = true
         nextBtn.isHidden = true
-        /*Set the ARSession Delegate to nil to stabilize the position of the grid*/
         sceneView.session.delegate = nil
         updateView()
         view.bringSubview(toFront: backBtn)

@@ -13,7 +13,7 @@ class Blocks
     private let parent: SCNNode
     private let scale: CGFloat
     private let chamferRadius: CGFloat
-    init(parent: SCNNode, scale: CGFloat, chamferRadius: CGFloat = 0.0){
+    init(parent: SCNNode, scale: CGFloat = gridConfig.size, chamferRadius: CGFloat = 0.0){
         self.parent = parent
         self.scale = scale
         self.chamferRadius = chamferRadius
@@ -48,7 +48,7 @@ class Blocks
         let node = SCNNode(geometry: cubeGeometry)
         node.position = SCNVector3(
             CGFloat(pos.x) * scale + scale / 2,
-            CGFloat(pos.y) * scale + scale / 2 - 2 * scale,
+            CGFloat(pos.y) * scale + scale / 2,
             -CGFloat(pos.z) * scale - scale / 2
         )
         return node

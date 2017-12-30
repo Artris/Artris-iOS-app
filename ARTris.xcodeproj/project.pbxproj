@@ -16,14 +16,13 @@
 		26BE91E71FBA583B00A942EE /* InitialSceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BE91E61FBA583B00A942EE /* InitialSceneViewController.swift */; };
 		26BE91EE1FBA6C9700A942EE /* GameSessionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BE91ED1FBA6C9700A942EE /* GameSessionList.swift */; };
 		26C4D6461FD1208300F422D4 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C4D6451FD1208300F422D4 /* Utilities.swift */; };
-		A6040F471FA6DDF20043B099 /* GridShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6040F461FA6DDF20043B099 /* GridShadow.swift */; };
+		26CF71551FEF235C00515B59 /* GridShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CF71541FEF235C00515B59 /* GridShadow.swift */; };
 		A62843331F93632E00A1E137 /* Interaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62843321F93632E00A1E137 /* Interaction.swift */; };
 		A64153BC1F85E8B500713806 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64153BB1F85E8B500713806 /* AppDelegate.swift */; };
 		A64153C11F85E8B500713806 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A64153BF1F85E8B500713806 /* Main.storyboard */; };
 		A64153C31F85E8B500713806 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A64153C21F85E8B500713806 /* Assets.xcassets */; };
 		A64153C61F85E8B500713806 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A64153C41F85E8B500713806 /* LaunchScreen.storyboard */; };
 		A66E60DD1F9375920044D35D /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66E60DC1F9375920044D35D /* Action.swift */; };
-		A6835ECD1F92FB2500A8A509 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6835ECC1F92FB2500A8A509 /* Grid.swift */; };
 		A6D452A11F944A7E0098AD5D /* Engine.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D452A01F944A7E0098AD5D /* Engine.swift */; };
 		A6E942E71F9310780092A170 /* Blocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E942E61F9310780092A170 /* Blocks.swift */; };
 		DA11A77687084F8D3C98E109 /* Pods_ARTris.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 289BC569375D6A88E6D7E4CA /* Pods_ARTris.framework */; };
@@ -39,10 +38,10 @@
 		26BE91E61FBA583B00A942EE /* InitialSceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialSceneViewController.swift; sourceTree = "<group>"; };
 		26BE91ED1FBA6C9700A942EE /* GameSessionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSessionList.swift; sourceTree = "<group>"; };
 		26C4D6451FD1208300F422D4 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		26CF71541FEF235C00515B59 /* GridShadow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridShadow.swift; sourceTree = "<group>"; };
 		283E50AC1AD89D7DDDFC4652 /* Pods-ARTris.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARTris.release.xcconfig"; path = "Pods/Target Support Files/Pods-ARTris/Pods-ARTris.release.xcconfig"; sourceTree = "<group>"; };
 		289BC569375D6A88E6D7E4CA /* Pods_ARTris.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ARTris.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		36F6C810736C5061E73C03F2 /* Pods-ARTris.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARTris.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ARTris/Pods-ARTris.debug.xcconfig"; sourceTree = "<group>"; };
-		A6040F461FA6DDF20043B099 /* GridShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridShadow.swift; sourceTree = "<group>"; };
 		A62843321F93632E00A1E137 /* Interaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interaction.swift; sourceTree = "<group>"; };
 		A64153B81F85E8B500713806 /* ARTris.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARTris.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A64153BB1F85E8B500713806 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -51,7 +50,6 @@
 		A64153C51F85E8B500713806 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A64153C71F85E8B500713806 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A66E60DC1F9375920044D35D /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
-		A6835ECC1F92FB2500A8A509 /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 		A6D452A01F944A7E0098AD5D /* Engine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Engine.swift; sourceTree = "<group>"; };
 		A6E942E61F9310780092A170 /* Blocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blocks.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -118,7 +116,6 @@
 				264397861FDBC89B00161476 /* GameViewController.swift */,
 				A6D452A01F944A7E0098AD5D /* Engine.swift */,
 				A6E942E61F9310780092A170 /* Blocks.swift */,
-				A6835ECC1F92FB2500A8A509 /* Grid.swift */,
 				A62843321F93632E00A1E137 /* Interaction.swift */,
 				A66E60DC1F9375920044D35D /* Action.swift */,
 			);
@@ -129,7 +126,6 @@
 			isa = PBXGroup;
 			children = (
 				2643978A1FDBC90000161476 /* LocalizationViewController.swift */,
-				A6040F461FA6DDF20043B099 /* GridShadow.swift */,
 			);
 			path = Localization;
 			sourceTree = "<group>";
@@ -174,6 +170,7 @@
 			children = (
 				2678AEC51FBE9C2500B92DDB /* Firebase.swift */,
 				A64153BB1F85E8B500713806 /* AppDelegate.swift */,
+				26CF71541FEF235C00515B59 /* GridShadow.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -317,15 +314,14 @@
 				A66E60DD1F9375920044D35D /* Action.swift in Sources */,
 				264397871FDBC89B00161476 /* GameViewController.swift in Sources */,
 				A6E942E71F9310780092A170 /* Blocks.swift in Sources */,
-				A6835ECD1F92FB2500A8A509 /* Grid.swift in Sources */,
 				A62843331F93632E00A1E137 /* Interaction.swift in Sources */,
-				A6040F471FA6DDF20043B099 /* GridShadow.swift in Sources */,
 				2643978B1FDBC90000161476 /* LocalizationViewController.swift in Sources */,
 				26C4D6461FD1208300F422D4 /* Utilities.swift in Sources */,
 				A64153BC1F85E8B500713806 /* AppDelegate.swift in Sources */,
 				26BE91EE1FBA6C9700A942EE /* GameSessionList.swift in Sources */,
 				A6D452A11F944A7E0098AD5D /* Engine.swift in Sources */,
 				26BE91E71FBA583B00A942EE /* InitialSceneViewController.swift in Sources */,
+				26CF71551FEF235C00515B59 /* GridShadow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
