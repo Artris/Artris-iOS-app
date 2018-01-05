@@ -10,51 +10,52 @@ import UIKit
 import ARKit
 import SceneKit
 
-class GameViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate, InteractionDelegate, EngineDelegate {
-    var engine: Engine!
-    var movementInteraction: Interaction?
-    var rotationInteraction: Interaction?
+class GameViewController: UIViewController, InteractionDelegate, EngineDelegate, ARSessionDelegate
+{
+    private var engine: Engine!
+    private var firebase: Firebase!
+    private var grid: GridShadow!
+    private var state: Blocks!
+    var sceneView: ARSCNView!
+    var sessionId: String?
+    var parentNode: SCNNode!
+    var eulerAngle: Double = 0.0
+    private var gridRotationAngle: Double!
     
-    @IBOutlet weak var sceneView: ARSCNView!
+    private var movementInteraction: Interaction?
+    private var rotationInteraction: Interaction?
+   
     @IBOutlet weak var movementView: UIView! {
         didSet {
             movementInteraction = Interaction(name: "Move", view: movementView)
             movementInteraction?.delegate = self
         }
     }
-    
     @IBOutlet weak var rotationView: UIView! {
         didSet {
             rotationInteraction = Interaction(name: "Rotate", view: rotationView)
             rotationInteraction?.delegate = self
         }
     }
-    
-    let scale: CGFloat = 0.2
-    var grid: Grid!
-    var state: Blocks!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        engine = Engine()
+        firebase = Firebase(gameId: sessionId)
+        engine = Engine(database: firebase)
+        state = Blocks(parent: parentNode)
         engine.delegate = self
-        sceneView.delegate = self
+        gridRotationAngle = Double(parentNode.eulerAngles.y)
         sceneView.session.delegate = self
-        sceneView.scene = SCNScene()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let configuration = ARWorldTrackingConfiguration()
-        sceneView.session.run(configuration)
+        sceneView.scene.rootNode.addChildNode(parentNode)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        grid = Grid(w: 8, h: 12, l: 8,
-                    parent: sceneView.scene.rootNode, scale: scale,
-                    color: UIColor.gray.withAlphaComponent(0.9))
-        state = Blocks(parent: sceneView.scene.rootNode, scale: scale)
+        grid = GridShadow(parent: parentNode, geometry: .threeD)
         grid.draw()
     }
     
@@ -63,13 +64,12 @@ class GameViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate
         sceneView.session.pause()
     }
     
-    var eulerAngle_y: Double = 0
-    @objc public func session(_ session: ARSession, didUpdate frame: ARFrame){
-        eulerAngle_y = Double(frame.camera.eulerAngles.y)
+    @objc public func session(_ session: ARSession, didUpdate frame: ARFrame) { 
+        eulerAngle =  Double(frame.camera.eulerAngles.y) + gridRotationAngle
     }
     
     func update(name: String, action: Action){
-        print("\(name) \(action.direction)")
+        firebase.pushAction(actionName: name, action: action)
     }
     
     func stateChanged(_ state: [Position]) {

@@ -10,16 +10,17 @@ import UIKit
 import ARKit
 
 protocol InteractionDelegate: class {
-    var eulerAngle_y: Double { get }
+    var eulerAngle: Double { get }
     func update(name: String, action: Action)
 }
 
-class Interaction: NSObject, UIGestureRecognizerDelegate {
+class Interaction: NSObject, UIGestureRecognizerDelegate
+{
     let name: String
     let view: UIView
     weak var delegate: InteractionDelegate?
     
-    init(name: String, view: UIView){
+    init(name: String, view: UIView) {
         self.name = name
         self.view = view
         super.init()
@@ -33,13 +34,13 @@ class Interaction: NSObject, UIGestureRecognizerDelegate {
         }
     }
     
-    @objc func swipeHandler(byReactingTo swipeRecognizer: UISwipeGestureRecognizer){
+    @objc func swipeHandler(byReactingTo swipeRecognizer: UISwipeGestureRecognizer) {
         let action  = Action(swipe: swipeRecognizer.direction, orientation: orientation)
         delegate?.update(name: name, action: action)
     }
     
     private var orientation: Int {
-        let direction: Double = delegate?.eulerAngle_y ?? 0
+        let direction: Double = delegate?.eulerAngle ?? 0
         switch direction {
         case let d where (-Double.pi / 4 <  d) && (d < Double.pi / 4): return 0
         case let d where (+Double.pi / 4 <  d) && (d < +3 * Double.pi / 4): return 1
