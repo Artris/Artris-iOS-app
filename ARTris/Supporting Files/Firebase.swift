@@ -25,12 +25,13 @@ class Firebase
         let session = Firebase.gameSessionsRef
         if let gameId = gameId {
             gameRef = session.child(gameId)
+            userIDRef = gameRef.childByAutoId()
         } else {
             gameRef = session.childByAutoId()
-            gameRef.setValue("initial push")
+            userIDRef = gameRef.childByAutoId()
+            gameRef.child("setup").child("player_1_id").setValue(userIDRef.key)
         }
         dataRef = gameRef.child("grid-render")
-        userIDRef = gameRef.childByAutoId() 
     }
     
     static public func fetchGameSessions(completion: @escaping(_ array: [String]) -> Void) {

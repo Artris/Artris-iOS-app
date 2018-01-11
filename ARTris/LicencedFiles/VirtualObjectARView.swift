@@ -1,6 +1,6 @@
 /*
 See LICENSE folder for this sample’s licensing information.
-
+ 
 Abstract:
 A custom `ARSCNView` configured for the requirements of this project.
 */

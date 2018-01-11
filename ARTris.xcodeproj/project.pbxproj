@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		26084AD71FE2490600DCC518 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 26084AD61FE2490600DCC518 /* GoogleService-Info.plist */; };
 		261C51411FD5316200FFAA95 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 261C51401FD5316200FFAA95 /* LICENSE.txt */; };
 		261C51431FD5319B00FFAA95 /* VirtualObjectARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261C51421FD5319B00FFAA95 /* VirtualObjectARView.swift */; };
 		264397871FDBC89B00161476 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264397861FDBC89B00161476 /* GameViewController.swift */; };
@@ -17,6 +16,7 @@
 		26BE91EE1FBA6C9700A942EE /* GameSessionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BE91ED1FBA6C9700A942EE /* GameSessionList.swift */; };
 		26C4D6461FD1208300F422D4 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C4D6451FD1208300F422D4 /* Utilities.swift */; };
 		26CF71551FEF235C00515B59 /* GridShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CF71541FEF235C00515B59 /* GridShadow.swift */; };
+		26D8207F20056BA000EB6953 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 26D8207E20056BA000EB6953 /* GoogleService-Info.plist */; };
 		A62843331F93632E00A1E137 /* Interaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62843321F93632E00A1E137 /* Interaction.swift */; };
 		A64153BC1F85E8B500713806 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64153BB1F85E8B500713806 /* AppDelegate.swift */; };
 		A64153C11F85E8B500713806 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A64153BF1F85E8B500713806 /* Main.storyboard */; };
@@ -29,7 +29,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		26084AD61FE2490600DCC518 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		261C51401FD5316200FFAA95 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		261C51421FD5319B00FFAA95 /* VirtualObjectARView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VirtualObjectARView.swift; sourceTree = "<group>"; };
 		264397861FDBC89B00161476 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -39,6 +38,7 @@
 		26BE91ED1FBA6C9700A942EE /* GameSessionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSessionList.swift; sourceTree = "<group>"; };
 		26C4D6451FD1208300F422D4 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		26CF71541FEF235C00515B59 /* GridShadow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridShadow.swift; sourceTree = "<group>"; };
+		26D8207E20056BA000EB6953 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		283E50AC1AD89D7DDDFC4652 /* Pods-ARTris.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARTris.release.xcconfig"; path = "Pods/Target Support Files/Pods-ARTris/Pods-ARTris.release.xcconfig"; sourceTree = "<group>"; };
 		289BC569375D6A88E6D7E4CA /* Pods_ARTris.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ARTris.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		36F6C810736C5061E73C03F2 /* Pods-ARTris.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARTris.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ARTris/Pods-ARTris.debug.xcconfig"; sourceTree = "<group>"; };
@@ -158,8 +158,8 @@
 				A64153CD1F85E91700713806 /* Supporting Files */,
 				A64153BF1F85E8B500713806 /* Main.storyboard */,
 				A64153C41F85E8B500713806 /* LaunchScreen.storyboard */,
-				26084AD61FE2490600DCC518 /* GoogleService-Info.plist */,
 				A64153C21F85E8B500713806 /* Assets.xcassets */,
+				26D8207E20056BA000EB6953 /* GoogleService-Info.plist */,
 				A64153C71F85E8B500713806 /* Info.plist */,
 			);
 			path = ARTris;
@@ -239,7 +239,7 @@
 			files = (
 				A64153C61F85E8B500713806 /* LaunchScreen.storyboard in Resources */,
 				A64153C31F85E8B500713806 /* Assets.xcassets in Resources */,
-				26084AD71FE2490600DCC518 /* GoogleService-Info.plist in Resources */,
+				26D8207F20056BA000EB6953 /* GoogleService-Info.plist in Resources */,
 				261C51411FD5316200FFAA95 /* LICENSE.txt in Resources */,
 				A64153C11F85E8B500713806 /* Main.storyboard in Resources */,
 			);
@@ -299,7 +299,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -464,7 +464,7 @@
 				DEVELOPMENT_TEAM = Z54VZ9PTP6;
 				INFOPLIST_FILE = ARTris/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = ca.sfu.ARTris;
+				PRODUCT_BUNDLE_IDENTIFIER = ca.sfu.ARTris.ghof;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
@@ -482,7 +482,7 @@
 				DEVELOPMENT_TEAM = Z54VZ9PTP6;
 				INFOPLIST_FILE = ARTris/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = ca.sfu.ARTris;
+				PRODUCT_BUNDLE_IDENTIFIER = ca.sfu.ARTris.ghof;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
