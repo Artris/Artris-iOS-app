@@ -19,6 +19,21 @@ class Blocks
         self.chamferRadius = chamferRadius
     }
     
+    private var width: CGFloat { return scale * CGFloat(gridConfig.w) }
+    private var length: CGFloat { return scale * CGFloat(gridConfig.l) }
+    private var wrapperPosition: SCNVector3 {
+        let midW =  width / 2.0
+        let midL =   length / 2.0
+        return SCNVector3(-midW, 0, midL)
+    }
+    
+    lazy private var wrapper: SCNNode = {
+        let node = SCNNode(geometry: nil)
+        node.position = wrapperPosition
+        parent.addChildNode(node)
+        return node
+    }()
+    
     private var nodes: [SCNNode] = [] {
         didSet {
             for node in oldValue { node.removeFromParentNode() }
@@ -28,7 +43,7 @@ class Blocks
     
     private func draw(){
         for node in nodes {
-            parent.addChildNode(node)
+            wrapper.addChildNode(node)
         }
     }
     

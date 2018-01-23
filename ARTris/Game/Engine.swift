@@ -13,7 +13,7 @@ class Position: NSObject
     let x, y, z, col: Int
     init? (dict: [String: Int]){
         if let x = dict["x"], let y = dict["z"], let z = dict["y"], let col = dict["col"] {
-            self.x = x; self.y = y; self.z = z - 1; self.col = col
+            self.x = x; self.y = y - 1; self.z = z; self.col = col
         } else {
             return nil
         }

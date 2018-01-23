@@ -126,9 +126,9 @@ class GridShadow
 }
 
 struct gridConfig {
-    static let w = 6
-    static let l = 6
-    static let h = 6
+    static let w = 5
+    static let l = 5
+    static let h = 16
     static let thicknessRatio = 40 as CGFloat
     static let size = 0.02 as CGFloat
     static let color = UIColor.gray.withAlphaComponent(0.9)

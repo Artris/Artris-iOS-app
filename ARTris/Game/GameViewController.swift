@@ -75,7 +75,7 @@ class GameViewController: UIViewController, InteractionDelegate, EngineDelegate,
     func stateChanged(_ state: [Position]) {
         self.state.blocks = state.map{ cell -> ((Int, Int, Int), Int) in
             return ((cell.x, cell.y, cell.z), cell.col)
-        }
+        } 
     }
 }
 
