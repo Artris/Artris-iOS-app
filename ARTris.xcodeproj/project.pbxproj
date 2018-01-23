@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		261C51411FD5316200FFAA95 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 261C51401FD5316200FFAA95 /* LICENSE.txt */; };
 		261C51431FD5319B00FFAA95 /* VirtualObjectARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261C51421FD5319B00FFAA95 /* VirtualObjectARView.swift */; };
+		2639B6B62016DAA900AC736C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2639B6B52016DAA900AC736C /* GoogleService-Info.plist */; };
 		264397871FDBC89B00161476 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264397861FDBC89B00161476 /* GameViewController.swift */; };
 		2643978B1FDBC90000161476 /* LocalizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2643978A1FDBC90000161476 /* LocalizationViewController.swift */; };
 		2678AEC61FBE9C2500B92DDB /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2678AEC51FBE9C2500B92DDB /* Firebase.swift */; };
@@ -16,7 +17,6 @@
 		26BE91EE1FBA6C9700A942EE /* GameSessionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BE91ED1FBA6C9700A942EE /* GameSessionList.swift */; };
 		26C4D6461FD1208300F422D4 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C4D6451FD1208300F422D4 /* Utilities.swift */; };
 		26CF71551FEF235C00515B59 /* GridShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CF71541FEF235C00515B59 /* GridShadow.swift */; };
-		26D8207F20056BA000EB6953 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 26D8207E20056BA000EB6953 /* GoogleService-Info.plist */; };
 		A62843331F93632E00A1E137 /* Interaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62843321F93632E00A1E137 /* Interaction.swift */; };
 		A64153BC1F85E8B500713806 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64153BB1F85E8B500713806 /* AppDelegate.swift */; };
 		A64153C11F85E8B500713806 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A64153BF1F85E8B500713806 /* Main.storyboard */; };
@@ -31,6 +31,7 @@
 /* Begin PBXFileReference section */
 		261C51401FD5316200FFAA95 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		261C51421FD5319B00FFAA95 /* VirtualObjectARView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VirtualObjectARView.swift; sourceTree = "<group>"; };
+		2639B6B52016DAA900AC736C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		264397861FDBC89B00161476 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		2643978A1FDBC90000161476 /* LocalizationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizationViewController.swift; sourceTree = "<group>"; };
 		2678AEC51FBE9C2500B92DDB /* Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firebase.swift; sourceTree = "<group>"; };
@@ -38,7 +39,6 @@
 		26BE91ED1FBA6C9700A942EE /* GameSessionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSessionList.swift; sourceTree = "<group>"; };
 		26C4D6451FD1208300F422D4 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		26CF71541FEF235C00515B59 /* GridShadow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridShadow.swift; sourceTree = "<group>"; };
-		26D8207E20056BA000EB6953 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		283E50AC1AD89D7DDDFC4652 /* Pods-ARTris.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARTris.release.xcconfig"; path = "Pods/Target Support Files/Pods-ARTris/Pods-ARTris.release.xcconfig"; sourceTree = "<group>"; };
 		289BC569375D6A88E6D7E4CA /* Pods_ARTris.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ARTris.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		36F6C810736C5061E73C03F2 /* Pods-ARTris.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARTris.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ARTris/Pods-ARTris.debug.xcconfig"; sourceTree = "<group>"; };
@@ -159,7 +159,7 @@
 				A64153BF1F85E8B500713806 /* Main.storyboard */,
 				A64153C41F85E8B500713806 /* LaunchScreen.storyboard */,
 				A64153C21F85E8B500713806 /* Assets.xcassets */,
-				26D8207E20056BA000EB6953 /* GoogleService-Info.plist */,
+				2639B6B52016DAA900AC736C /* GoogleService-Info.plist */,
 				A64153C71F85E8B500713806 /* Info.plist */,
 			);
 			path = ARTris;
@@ -239,9 +239,9 @@
 			files = (
 				A64153C61F85E8B500713806 /* LaunchScreen.storyboard in Resources */,
 				A64153C31F85E8B500713806 /* Assets.xcassets in Resources */,
-				26D8207F20056BA000EB6953 /* GoogleService-Info.plist in Resources */,
 				261C51411FD5316200FFAA95 /* LICENSE.txt in Resources */,
 				A64153C11F85E8B500713806 /* Main.storyboard in Resources */,
+				2639B6B62016DAA900AC736C /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,7 +299,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
