@@ -13,7 +13,7 @@ class Blocks
     private let parent: SCNNode
     private let scale: CGFloat
     private let chamferRadius: CGFloat
-    init(parent: SCNNode, scale: CGFloat = gridConfig.size, chamferRadius: CGFloat = 0.0){
+    init(parent: SCNNode, scale: CGFloat = gridConfig.size, chamferRadius: CGFloat = 0.003){
         self.parent = parent
         self.scale = scale
         self.chamferRadius = chamferRadius
@@ -48,11 +48,11 @@ class Blocks
     }
     
     private let colorMap: [Int: UIColor] = [
-        1: UIColor.green,
-        2: UIColor.blue,
-        3: UIColor.red,
-        4: UIColor.yellow,
-        0: UIColor.black
+        1: #colorLiteral(red: 0.4196078431, green: 0.831372549, blue: 0.1450980392, alpha: 1),
+        2: #colorLiteral(red: 0.6470588235, green: 0.1098039216, blue: 0.1882352941, alpha: 1),
+        3: #colorLiteral(red: 0.003921568627, green: 0.5921568627, blue: 0.9647058824, alpha: 1),
+        4: #colorLiteral(red: 0.3764705882, green: 0, blue: 0.2784313725, alpha: 1),
+        0: #colorLiteral(red: 0.231372549, green: 0.1568627451, blue: 0.8, alpha: 1)
     ]
     
     private func cell(pos: (x: Int, y: Int, z: Int), color: UIColor) -> SCNNode {
@@ -72,7 +72,7 @@ class Blocks
     var blocks: [(pos: (Int, Int, Int), col: Int)] = [] {
         didSet {
             nodes = blocks.map{ block in
-                cell(pos: block.pos, color: colorMap[block.col] ?? UIColor.purple)
+                cell(pos: block.pos, color: colorMap[block.col] ?? #colorLiteral(red: 0.4118180871, green: 0.4118918777, blue: 0.4118083119, alpha: 1))
             }
         }
     }
