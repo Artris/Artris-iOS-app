@@ -44,6 +44,7 @@ class LocalizationViewController: UIViewController,ARSessionDelegate
         super.viewDidLoad()
         sceneView.session.delegate = self
         sceneView.scene = SCNScene()
+        configureLighting()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -114,6 +115,12 @@ class LocalizationViewController: UIViewController,ARSessionDelegate
     
     @IBAction func backBtnPressed(_ sender: Any) {
          self.performSegue(withIdentifier: "unwindToInitialScene", sender: self)
+    }
+    
+    func configureLighting() {
+        sceneView.autoenablesDefaultLighting = true
+        sceneView.automaticallyUpdatesLighting = true
+        
     }
 }
 
